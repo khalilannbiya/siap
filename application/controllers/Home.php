@@ -7,6 +7,8 @@ class Home extends CI_Controller
   public function index()
   {
     $data['title'] = "Home";
+    $data['session_cek'] = $this->session->userdata('role_id') == 2;
+
     $this->load->view('templates-user/header_home', $data);
     $this->load->view('user/index');
     $this->load->view('templates-user/footer');

@@ -7,7 +7,11 @@
         <h1>Sistem Informasi Aduan Masyarakat Kelurahan Situdam</h1>
         <p>Sampaikan aduan Anda kepada kami dan ambil peran dalam mewujudkan pelayanan masyarakat yang lebih baik.</p>
         <div class="wrapper-cta">
-          <a href="<?= base_url(); ?>auth" class="btn btn-primary btn-cta">Mulai buat aduan</a>
+          <?php if ($session_cek) : ?>
+            <a href="<?= base_url(); ?>laporan" class="btn btn-primary btn-cta">Mulai buat aduan</a>
+          <?php else : ?>
+            <a href="<?= base_url(); ?>auth" class="btn btn-primary btn-cta">Mulai buat aduan</a>
+          <?php endif; ?>
           <a href="#uniccode-search-section" class="btn btn-outline-primary btn-cta-secondary">Lacak aduan</a>
         </div>
       </div>
@@ -104,32 +108,3 @@
     </div>
   </section>
 </main>
-
-
-
-<!-- Begin Page Content -->
-<!-- <div class="container-fluid"> -->
-
-<!-- Page Heading -->
-<!-- <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img width="100%" src="<?= base_url(); ?>assets/img/profile/<?= $user['image']; ?>" alt="Profile Picture">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><?= $user['name']; ?></h5>
-          <p class="card-text"><?= $user['email']; ?></p>
-          <p class="card-text"><small class="text-muted">Member since : <?= date('d F Y', $user['date_created']); ?></small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div> -->
-<!-- /.container-fluid -->
-
-<!-- </div> -->
-<!-- End of Main Content -->

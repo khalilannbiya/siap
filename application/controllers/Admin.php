@@ -8,7 +8,7 @@ class Admin extends CI_Controller
   {
     parent::__construct();
     if (!$this->session->userdata('email')) {
-      redirect('auth');
+      redirect('home');
     }
 
     // Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan user, jadi tidak boleh masuk ke controller user

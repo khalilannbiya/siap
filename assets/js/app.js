@@ -44,3 +44,16 @@ document.onreadystatechange = function () {
 		else navbar.classList.remove("navbar-shadow");
 	});
 };
+
+// My Alert display none with setTimeOut
+
+function hideAlertAutomatic() {
+	let myAlert = document.querySelector(".alert");
+	myAlert.classList.toggle("hide-myalert");
+	setTimeout(displayNone, 2000);
+
+	function displayNone() {
+		myAlert.classList.toggle("d-none");
+	}
+}
+setTimeout(hideAlertAutomatic, 4000);
