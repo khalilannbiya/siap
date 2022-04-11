@@ -46,14 +46,17 @@ document.onreadystatechange = function () {
 };
 
 // My Alert display none with setTimeOut
-
-function hideAlertAutomatic() {
+setTimeout(() => {
 	let myAlert = document.querySelector(".alert");
 	myAlert.classList.toggle("hide-myalert");
-	setTimeout(displayNone, 2000);
-
-	function displayNone() {
+	setTimeout(() => {
 		myAlert.classList.toggle("d-none");
-	}
-}
-setTimeout(hideAlertAutomatic, 4000);
+	}, 2000);
+}, 4000);
+
+// Edit responsive via js
+let rowLayout = document.getElementById("row-layout");
+let columnLayout = document.getElementById("column-layout");
+let outerWidth = window.outerWidth;
+
+console.log(outerWidth);

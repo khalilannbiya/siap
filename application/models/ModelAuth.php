@@ -7,6 +7,10 @@ class ModelAuth extends CI_Model
     $data = [
       'name' => $this->input->post('name', true),
       'email' => $this->input->post('email', true),
+      'jenis_kelamin' => $this->input->post('gender', true),
+      'nik' => $this->input->post('nik', true),
+      'no_hp' => $this->input->post('nope', true),
+      'address' => $this->input->post('alamat', true),
       'image' => "default.jpg",
       'password' => password_hash($this->input->post('password1', true), PASSWORD_DEFAULT),
       'role_id' => 2,

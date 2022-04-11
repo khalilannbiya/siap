@@ -6,24 +6,45 @@
     </div>
     <div class="links">
       <h2>Useful Links</h2>
-      <ul>
-        <li>
-          <i class="ri-arrow-right-s-fill"></i>
-          <a href="#welcoming-section">Beranda</a>
-        </li>
-        <li>
-          <i class="ri-arrow-right-s-fill"></i>
-          <a href="#section-statistik">Statistik</a>
-        </li>
-        <li>
-          <i class="ri-arrow-right-s-fill"></i>
-          <a href="#about-us">Tentang Kami</a>
-        </li>
-        <li>
-          <i class="ri-arrow-right-s-fill"></i>
-          <a href="#uniccode-search-section">Lacak Aduan</a>
-        </li>
-      </ul>
+      <?php if ($session_cek) : ?>
+        <ul>
+          <li>
+            <i class="ri-arrow-right-s-fill"></i>
+            <a href="<?= base_url(); ?>user">Beranda</a>
+          </li>
+          <li>
+            <i class="ri-arrow-right-s-fill"></i>
+            <a href="#section-statistik">Buat aduan</a>
+          </li>
+          <li>
+            <i class="ri-arrow-right-s-fill"></i>
+            <a href="#about-us">Riwayat</a>
+          </li>
+          <li>
+            <i class="ri-arrow-right-s-fill"></i>
+            <a href="#uniccode-search-section">My Profile</a>
+          </li>
+        </ul>
+      <?php else : ?>
+        <ul>
+          <li>
+            <i class="ri-arrow-right-s-fill"></i>
+            <a href="#welcoming-section">Beranda</a>
+          </li>
+          <li>
+            <i class="ri-arrow-right-s-fill"></i>
+            <a href="#section-statistik">Statistik</a>
+          </li>
+          <li>
+            <i class="ri-arrow-right-s-fill"></i>
+            <a href="#about-us">Tentang Kami</a>
+          </li>
+          <li>
+            <i class="ri-arrow-right-s-fill"></i>
+            <a href="#uniccode-search-section">Lacak Aduan</a>
+          </li>
+        </ul>
+      <?php endif; ?>
     </div>
   </div>
   <h6>Copyright © <strong>Siap</strong>. All Rights Reserved</h6>

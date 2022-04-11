@@ -26,6 +26,11 @@
 
 <body>
   <?php if ($session_cek) : ?>
+    <?php if ($this->session->flashdata('message')) : ?>
+      <div class="alert my-alert alert-success alert-dismissible fade show fixed-top container-sm" role="alert" id="myAlert">
+        <strong>Yeayyyyy</strong> <?= $this->session->flashdata('message'); ?>
+      </div>
+    <?php endif; ?>
     <!-- ======================= Navbar ======================= -->
     <header>
       <nav class="nav-bar">
@@ -67,7 +72,6 @@
     <?php if ($this->session->flashdata('message')) : ?>
       <div class="alert my-alert alert-success alert-dismissible fade show fixed-top container-sm" role="alert" id="myAlert">
         <strong>Yeayyyyy</strong> <?= $this->session->flashdata('message'); ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <?php endif; ?>
     <!-- ======================= Navbar ======================= -->

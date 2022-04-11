@@ -24,7 +24,7 @@ class User extends CI_Controller
     $data['title'] = "Beranda";
     $this->load->view('templates-user/header_home', $data);
     $this->load->view('user/index', $data);
-    $this->load->view('templates-user/footer');
+    $this->load->view('templates-user/footer', $data);
   }
 
   // public function index()

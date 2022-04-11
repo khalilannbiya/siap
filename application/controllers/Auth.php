@@ -5,17 +5,21 @@ class Auth extends CI_Controller
 {
   public function index()
   {
+
     $this->form_validation->set_rules(
       'email',
       'Email',
       'required|trim|valid_email',
-      ['required' => 'You must provide a %s.']
+      [
+        'required' => '%s harus diisi!',
+        'valid_email' => 'Gunakan email yang benar!'
+      ]
     );
     $this->form_validation->set_rules(
       'password',
       'Password',
       'required|trim',
-      ['required' => 'You must provide a %s.']
+      ['required' => '%s harus diisi!']
     );
 
     if ($this->form_validation->run() == FALSE) {
@@ -55,18 +59,19 @@ class Auth extends CI_Controller
           if ($user['role_id'] == 1) {
             redirect('admin');
           } else {
+            $this->session->set_flashdata('message', "Anda telah berhasil Login!");
             redirect('user');
           }
         } else {
-          $this->session->set_flashdata('messageWrong', 'Wrong password!');
+          $this->session->set_flashdata('messageWrong', 'Password salah!');
           redirect('auth');
         }
       } else {
-        $this->session->set_flashdata('messageWrong', 'Your email has not been activated!');
+        $this->session->set_flashdata('messageWrong', 'Email anda belum di aktivasi!');
         redirect('auth');
       }
     } else {
-      $this->session->set_flashdata('messageWrong', 'Your email is nor registered!');
+      $this->session->set_flashdata('messageWrong', 'Email anda belum teregistrasi!');
       redirect('auth');
     }
   }
@@ -77,49 +82,85 @@ class Auth extends CI_Controller
       'name',
       'Name',
       'required|trim',
-      ['required' => 'You must provide a %s.']
+      ['required' => '%s harus diisi!']
     );
     $this->form_validation->set_rules(
       'email',
       'Email',
       'required|trim|valid_email|is_unique[user.email]',
       [
-        'required' => 'You must provide a %s.',
-        'is_unique' => 'This email has already registered!'
+        'required' => '%s harus diisi!.',
+        'valid_email' => 'Gunakan email yang benar!',
+        'is_unique' => 'Email ini sudah teregistrasi sebelumnya!'
       ]
+    );
+    $this->form_validation->set_rules(
+      'nik',
+      'NIK',
+      'required|trim|numeric|is_unique[user.nik]|max_length[16]',
+      [
+        'required' => '%s harus diisi!.',
+        'numeric' => 'Diisi dengan angka!',
+        'max_length' => 'Yang kamu masukkan bukan NIK!',
+        'is_unique' => 'Nomor ini sudah teregistrasi sebelumnya!'
+      ]
+    );
+    $this->form_validation->set_rules(
+      'gender',
+      'Jenis Kelamin',
+      'required|trim',
+      [
+        'required' => '%s harus diisi!.',
+      ]
+    );
+    $this->form_validation->set_rules(
+      'nope',
+      'Nomor Telepon',
+      'required|trim|numeric',
+      [
+        'required' => '%s harus diisi!.',
+        'numeric' => 'Diisi dengan angka!'
+      ]
+    );
+    $this->form_validation->set_rules(
+      'alamat',
+      'Alamat',
+      'required|trim',
+      ['required' => '%s harus diisi!']
     );
     $this->form_validation->set_rules(
       'password1',
       'Password',
       'required|trim|min_length[5]|matches[password2]',
       [
-        'required' => 'You must provide a %s.',
-        'matches' => 'password dont match!',
-        'min_length' => 'Passwor too short!'
+        'required' => '%s harus diisi!',
+        'matches' => 'Password tidak sesuai!',
+        'min_length' => 'Password terlalu pendek!'
       ]
     );
     $this->form_validation->set_rules(
       'password2',
       'Password',
       'required|trim|matches[password1]',
-      ['required' => 'You must provide a %s.']
+      ['required' => '%s harus diisi!']
     );
 
     if ($this->form_validation->run() == FALSE) {
       $data['title'] = "User Registration";
+      $data['gender'] = ['Laki-laki', 'Perempuan'];
       $this->load->view('templates/auth_header', $data);
-      $this->load->view('auth/registration');
+      $this->load->view('auth/registration', $data);
       $this->load->view('templates/auth_footer');
     } else {
       $this->ModelAuth->insertData();
-      $this->session->set_flashdata('message', 'Your account has been created. Please Login!');
+      $this->session->set_flashdata('message', 'Akun anda sudah di daftar-kan, silahkan login!');
       redirect('auth');
     }
   }
 
   public function logout()
   {
-    // Bersihkan session dan mengembalikan ke halaman login
+    // Bersihkan session dan mengembalikan ke halaman home
     $this->session->unset_userdata('email');
     $this->session->unset_userdata('role_id');
     $this->session->set_flashdata('message', 'Anda telah logout!');
