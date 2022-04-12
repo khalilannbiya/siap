@@ -26,10 +26,16 @@
 
 <body>
   <?php if ($session_cek) : ?>
-    <?php if ($this->session->flashdata('message')) : ?>
-      <div class="alert my-alert alert-success alert-dismissible fade show fixed-top container-sm" role="alert" id="myAlert">
-        <strong>Yeayyyyy</strong> <?= $this->session->flashdata('message'); ?>
-      </div>
+    <?php if ($this->session->flashdata()) : ?>
+      <?php if ($this->session->flashdata('message')) : ?>
+        <div class="alert my-alert alert-success alert-dismissible fade show fixed-top container-sm" role="alert" id="myAlert">
+          <strong>Yeayyyyy</strong> <?= $this->session->flashdata('message'); ?>
+        </div>
+      <?php elseif ($this->session->flashdata('messageWrong')) : ?>
+        <div class="alert my-alert alert-danger alert-dismissible fade show fixed-top container-sm" role="alert" id="myAlert">
+          <strong>Yahhhhh</strong> <?= $this->session->flashdata('messageWrong'); ?>
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
     <!-- ======================= Navbar ======================= -->
     <header>
@@ -47,7 +53,7 @@
             <a href="<?= base_url(); ?>complaint/add" class="<?= $title === "Buat Aduan" ? "active" : ""; ?>">Buat Aduan</a>
           </li>
           <li>
-            <a href="#about-us">Riwayat</a>
+            <a href="<?= base_url(); ?>complaint/get" class="<?= $title === "Riwayat" ? "active" : ""; ?>">Riwayat</a>
           </li>
           <li>
             <a href="#about-us">My Profile</a>

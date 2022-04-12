@@ -20,10 +20,54 @@ class Complaint extends CI_Controller
     if ($this->session->userdata('role_id') != 2) {
       redirect('admin');
     }
+
+    $this->form_validation->set_rules(
+      'categories',
+      'Kategori',
+      'required|trim',
+      [
+        'required' => '%s harus diisi!.',
+      ]
+    );
+    $this->form_validation->set_rules(
+      'judul',
+      'Judul',
+      'required|trim|max_length[50]',
+      [
+        'required' => '%s harus diisi!.',
+        'max_length' => 'Jangan terlalu panjang!',
+      ]
+    );
+    $this->form_validation->set_rules(
+      'body',
+      'Isi',
+      'required|trim',
+      [
+        'required' => '%s harus diisi!.'
+      ]
+    );
+
+    if (!$this->form_validation->run()) {
+      $data['session_cek'] = $this->session->userdata('role_id') == 2;
+      $data['title'] = "Buat Aduan";
+      $data['user']  = $this->ModelUser->getUserByEmail();
+      $data['categories'] = ['Bencana', 'Pencurian', 'Fasilitas'];
+      $this->load->view('templates-user/header_home', $data);
+      $this->load->view('user/complaint', $data);
+      $this->load->view('templates-user/footer');
+    } else {
+      $this->ModelComplaint->insertData();
+      $this->session->set_flashdata('message', 'Aduan anda telah dikirim-kan, silahkan tunggu untuk proses lebih lanjut!');
+      redirect('complaint/add');
+    }
+  }
+
+  public function get()
+  {
+    $data['title'] = "Riwayat";
     $data['session_cek'] = $this->session->userdata('role_id') == 2;
-    $data['title'] = "Buat Aduan";
     $this->load->view('templates-user/header_home', $data);
-    $this->load->view('user/complaint', $data);
+    $this->load->view('user/history', $data);
     $this->load->view('templates-user/footer');
   }
 }

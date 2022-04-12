@@ -590,6 +590,23 @@ nav ul .btn-nav {
   text-align: center;
 }
 
+/* Section Form Complaint  */
+.form-complaint {
+  padding: 10%;
+}
+
+.form-complaint h2 {
+  font-size: 1.5vw;
+  font-weight: 600;
+}
+
+section:nth-child(2) h2 {
+  margin-top: 3vw;
+}
+
+/* Riwayat */
+
+
 /* Ukuran Tablet */
 @media screen and (max-width: 992px) {
   .menu-toggle {
@@ -896,6 +913,19 @@ nav ul .btn-nav {
   #footer-user h6 {
     font-size: 1.5vw;
   }
+
+  /* Section Form Complaint  */
+  .form-complaint {
+    padding: 15% 5% 10% 5%;
+  }
+
+  .form-complaint h2 {
+    font-size: 2vw;
+  }
+
+  section:nth-child(2) h2 {
+    margin-top: 4vw;
+  }
 }
 
 @media screen and (max-width: 768px) {}
@@ -1147,5 +1177,22 @@ nav ul .btn-nav {
     margin: 3% 0 0 0;
     font-size: 2vw;
     text-align: center;
+  }
+
+  /* Section Form Complaint  */
+  .form-complaint {
+    padding: 20% 5% 10% 5%;
+  }
+
+  .form-complaint h2 {
+    font-size: 5vw;
+  }
+
+  section:nth-child(2) h2 {
+    margin-top: 6vw;
+  }
+
+  .form-complaint textarea, .form-complaint .form-floating textarea {
+    height: 100px;
   }
 }

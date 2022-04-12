@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Asia/Jakarta");
 
 class ModelAuth extends CI_Model
 {
