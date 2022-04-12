@@ -8,7 +8,7 @@
         <p>Sampaikan aduan Anda kepada kami dan ambil peran dalam mewujudkan pelayanan masyarakat yang lebih baik.</p>
         <div class="wrapper-cta">
           <?php if ($session_cek) : ?>
-            <a href="<?= base_url(); ?>laporan" class="btn btn-primary btn-cta">Mulai buat aduan</a>
+            <a href="<?= base_url(); ?>complaint/add" class="btn btn-primary btn-cta">Mulai buat aduan</a>
           <?php else : ?>
             <a href="<?= base_url(); ?>auth" class="btn btn-primary btn-cta">Mulai buat aduan</a>
           <?php endif; ?>

@@ -44,7 +44,7 @@
             <a href="<?= base_url(); ?>user" class="<?= $title === "Beranda" ? "active" : ""; ?>">Beranda</a>
           </li>
           <li>
-            <a href="#section-statistik">Buat Aduan</a>
+            <a href="<?= base_url(); ?>complaint/add" class="<?= $title === "Buat Aduan" ? "active" : ""; ?>">Buat Aduan</a>
           </li>
           <li>
             <a href="#about-us">Riwayat</a>
