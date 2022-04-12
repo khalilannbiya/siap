@@ -26,7 +26,7 @@
         <textarea name="alamat" id="alamat" class="form-control" value="<?= $user['address']; ?>" disabled><?= $user['address']; ?>"</textarea>
       </div>
     </section>
-    <section>
+    <section class="data-aduan">
       <h2>Data Aduan</h2>
       <hr class="divider">
       <div class="mb-3">

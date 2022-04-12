@@ -32,10 +32,11 @@ class Complaint extends CI_Controller
     $this->form_validation->set_rules(
       'judul',
       'Judul',
-      'required|trim|max_length[50]',
+      'required|trim|max_length[40]|min_length[35]',
       [
         'required' => '%s harus diisi!.',
         'max_length' => 'Jangan terlalu panjang!',
+        'min_length' => 'Jangan terlalu pendek'
       ]
     );
     $this->form_validation->set_rules(
@@ -58,7 +59,7 @@ class Complaint extends CI_Controller
     } else {
       $this->ModelComplaint->insertData();
       $this->session->set_flashdata('message', 'Aduan anda telah dikirim-kan, silahkan tunggu untuk proses lebih lanjut!');
-      redirect('complaint/add');
+      redirect('complaint/get');
     }
   }
 
@@ -66,8 +67,23 @@ class Complaint extends CI_Controller
   {
     $data['title'] = "Riwayat";
     $data['session_cek'] = $this->session->userdata('role_id') == 2;
+    $data['reports'] = $this->ModelComplaint->getDataByEmailSession();
     $this->load->view('templates-user/header_home', $data);
     $this->load->view('user/history', $data);
+    $this->load->view('templates-user/footer');
+  }
+
+  public function show($unic)
+  {
+
+    if (!$this->ModelComplaint->getDataById($unic)) {
+      redirect('complaint/get');
+    }
+    $data['session_cek'] = $this->session->userdata('role_id') == 2;
+    $data['title'] = "Detail";
+    $data['detail'] = $this->ModelComplaint->getDataById($unic);
+    $this->load->view('templates-user/header_home', $data);
+    $this->load->view('user/detail', $data);
     $this->load->view('templates-user/footer');
   }
 }

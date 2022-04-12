@@ -600,12 +600,69 @@ nav ul .btn-nav {
   font-weight: 600;
 }
 
-section:nth-child(2) h2 {
+.data-aduan h2 {
   margin-top: 3vw;
 }
 
 /* Riwayat */
+.section-history {
+  padding: 10%;
+}
 
+.section-history .wrapper-card__history {
+  display: flex;
+  gap: 5%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card__history {
+  width: 45%;
+  background-color: #f3f3f3;
+  padding: 3%;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 2vw;
+  transition: all 1s;
+}
+
+.card__history:hover {
+  transition: all 1s;
+  box-shadow: 10px 10px 18px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 10px 10px 18px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 10px 10px 18px 5px rgba(0, 0, 0, 0.15);
+
+}
+
+.card__history h2 {
+  font-size: 1.5vw;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.status__history {
+  background-color: #ACD1AF;
+  color: #175e35;
+  display: inline-block;
+  padding: .5vw 3vw;
+  border-radius: 100px;
+  font-size: 1vw;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-top: 1vw;
+}
+
+.icon__history {
+  display: flex;
+  gap: 10px;
+  font-size: 1.2vw;
+  font-weight: 600;
+}
+
+/* Detail */
+.section-detail {
+  padding: 10%;
+}
 
 /* Ukuran Tablet */
 @media screen and (max-width: 992px) {
@@ -923,7 +980,7 @@ section:nth-child(2) h2 {
     font-size: 2vw;
   }
 
-  section:nth-child(2) h2 {
+  .data-aduan h2 {
     margin-top: 4vw;
   }
 }
@@ -1188,7 +1245,7 @@ section:nth-child(2) h2 {
     font-size: 5vw;
   }
 
-  section:nth-child(2) h2 {
+  .data-aduan h2 {
     margin-top: 6vw;
   }
 

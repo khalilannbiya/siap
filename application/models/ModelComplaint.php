@@ -24,4 +24,21 @@ class ModelComplaint extends CI_Model
 
     $this->db->insert('aduan', $data);
   }
+
+  public function getDataByEmailSession()
+  {
+    $userEmail = $this->session->userdata('email');
+    return $this->db->where('email', $userEmail)
+      ->order_by('id', 'DESC')
+      ->get('aduan')->result_array();
+  }
+
+  public function getDataById($unic)
+  {
+    $dataUser =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    // var_dump($dataUser);
+    // var_dump($dataUser['email']);
+
+    return $this->db->get_where('aduan', ['kode_unik' => $unic, 'email' => $dataUser['email']])->row_array();
+  }
 }
