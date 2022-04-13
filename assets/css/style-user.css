@@ -820,6 +820,38 @@ nav ul .btn-nav {
   padding: 10%;
 }
 
+.table-detail {
+  width: 100%;
+  font-size: 1.1vw;
+}
+
+.section-detail h2 {
+  font-size: 1.5vw;
+  font-weight: 600;
+}
+
+.wrapper-complaint__detail {
+  margin-top: 2vw;
+}
+
+.table-detail tr {
+  height: 3.5vw;
+}
+
+.table-detail th {
+  width: 15%;
+}
+
+.section-detail .btn {
+  padding: .5vw 2vw;
+  font-size: 1vw;
+  background-color: grey;
+  color: var(--dark);
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 2vw;
+}
+
 /* Ukuran Tablet */
 @media screen and (max-width: 992px) {
   .menu-toggle {
@@ -1244,6 +1276,42 @@ nav ul .btn-nav {
   .empty-data img {
     width: 30vw;
   }
+
+  /* Detail */
+  .section-detail {
+    padding: 20% 5% 15% 5%;
+  }
+
+  .table-detail {
+    width: 100%;
+    font-size: 2vw;
+  }
+
+  .section-detail h2 {
+    font-size: 3vw;
+  }
+
+  .wrapper-complaint__detail {
+    margin-top: 4vw;
+  }
+
+  .table-detail tr {
+    height: 7vw;
+  }
+
+  .table-detail th {
+    width: 20%;
+  }
+
+  .section-detail .btn {
+    padding: .5vw 2vw;
+    font-size: 2.5vw;
+    background-color: grey;
+    color: var(--dark);
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 3vw;
+  }
 }
 
 @media screen and (max-width: 768px) {}
@@ -1619,5 +1687,41 @@ nav ul .btn-nav {
 
   .empty-data img {
     width: 40vw;
+  }
+
+  /* Detail */
+  .section-detail {
+    padding: 30% 5% 15% 5%;
+  }
+
+  .table-detail {
+    width: 100%;
+    font-size: 3.5vw;
+  }
+
+  .section-detail h2 {
+    font-size: 4.5vw;
+  }
+
+  .wrapper-complaint__detail {
+    margin-top: 6vw;
+  }
+
+  .table-detail tr {
+    height: 11vw;
+  }
+
+  .table-detail th {
+    width: 35%;
+  }
+
+  .section-detail .btn {
+    padding: 1.5vw 4vw;
+    font-size: 4.5vw;
+    background-color: grey;
+    color: var(--dark);
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 10vw;
   }
 }

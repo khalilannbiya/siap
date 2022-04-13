@@ -1,26 +1,68 @@
 <!-- Main -->
 <main>
   <section class="section-detail">
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Profile</h5>
-            <p class="card-text">Nama : <?= $detail['name']; ?></p>
-            <p class="card-text">Email : <?= $detail['email']; ?></p>
-            <p class="card-text">Nomor Telepon : <?= $detail['no_hp']; ?></p>
-            <p class="card-text">Alamat : <?= $detail['address']; ?></p>
-            <p class="card-text">NIK : <?= $detail['nik']; ?></p>
-            <p class="card-text">Kategori : <?= $detail['categories']; ?></p>
-            <p class="card-text">Judul : <?= $detail['judul']; ?></p>
-            <p class="card-text">Body : <?= $detail['body']; ?></p>
-            <p class="card-text">Kode Unik : <?= $detail['kode_unik']; ?></p>
-            <p class="card-text">Status : <span id="status"><?= $detail['status']; ?></span> </p>
-            <p class="card-text"><small class="text-muted">Bergabung sejak <?= date('H:i d-m-Y', $detail['date_created']); ?></small></p>
-            <a href="<?= base_url(); ?>complaint/get" class="btn btn-secondary">Kembali</a>
-          </div>
-        </div>
-      </div>
+    <div class="wrapper-data__detail">
+      <h2>Data Pengirim</h2>
+      <hr class="divider">
+      <table class="table-detail">
+        <tr>
+          <th>Nama</th>
+          <td>: <?= $detail['name']; ?></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>: <?= $detail['email']; ?></td>
+        </tr>
+        <tr>
+          <th>Nomor Telepon</th>
+          <td>: <?= $detail['no_hp']; ?></td>
+        </tr>
+        <tr>
+          <th>Alamat</th>
+          <td>: <?= $detail['address']; ?></td>
+        </tr>
+        <tr>
+          <th>NIK</th>
+          <td>: <?= $detail['nik']; ?></td>
+        </tr>
+      </table>
     </div>
+    <div class="wrapper-complaint__detail">
+      <h2>Data Aduan</h2>
+      <hr class="divider">
+      <table class="table-detail">
+        <tr>
+          <th>Kategori</th>
+          <td>: <?= $detail['categories']; ?></td>
+        </tr>
+        <tr>
+          <th>Judul</th>
+          <td>: <?= $detail['judul']; ?></td>
+        </tr>
+        <tr>
+          <th>Isi aduan</th>
+          <td>: <?= $detail['body']; ?></td>
+        </tr>
+        <tr>
+          <th>Kode unik</th>
+          <td>: <span class="fw-bold"><?= $detail['kode_unik']; ?></span></td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <?php if ($detail['status'] == "diterima") : ?>
+            <td>: <span class="fw-bold text-capitalize text-success"><?= $detail['status']; ?></span></td>
+          <?php elseif ($detail['status'] == "diproses") : ?>
+            <td>: <span class="fw-bold text-capitalize text-warning"><?= $detail['status']; ?></span></td>
+          <?php else : ?>
+            <td>: <span class="fw-bold text-capitalize text-danger"><?= $detail['status']; ?></span></td>
+          <?php endif; ?>
+        </tr>
+        <tr>
+          <th>Dikirimkan</th>
+          <td>: <?= date('H:i d-m-Y', $detail['date_created']); ?></td>
+        </tr>
+      </table>
+    </div>
+    <a href="<?= base_url(); ?>complaint/get" class=" btn btn-secondary back-to-history">Kembali</a>
   </section>
 </main>
