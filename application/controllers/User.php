@@ -22,6 +22,7 @@ class User extends CI_Controller
   {
     $data['session_cek'] = $this->session->userdata('role_id') == 2;
     $data['title'] = "Beranda";
+    $data['statistik'] = $this->ModelComplaint->getDataNumByStatus();
     $this->load->view('templates-user/header_home', $data);
     $this->load->view('user/index', $data);
     $this->load->view('templates-user/footer', $data);

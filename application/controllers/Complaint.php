@@ -63,7 +63,7 @@ class Complaint extends CI_Controller
     }
   }
 
-  public function get()
+  public function get($status = null)
   {
     $data['title'] = "Riwayat";
     $data['session_cek'] = $this->session->userdata('role_id') == 2;
@@ -71,6 +71,8 @@ class Complaint extends CI_Controller
 
     if ($this->input->post('keyword')) {
       $data['reports'] = $this->ModelComplaint->searchComplaintForUser();
+    } elseif ($status) {
+      $data['reports'] = $this->ModelComplaint->searchByStatus($status);
     }
     $this->load->view('templates-user/header_home', $data);
     $this->load->view('user/history', $data);

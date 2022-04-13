@@ -8,37 +8,50 @@
           <button class="btn-search" type="submit" name="cari" id="button-addon2">Cari</button>
         </div>
       </form>
+      <div class="wrapper-btn__history">
+        <a href="<?= base_url(); ?>complaint/get/" class="btn-status">Semua</a>
+        <a href="<?= base_url(); ?>complaint/get/diterima" class="btn-status">Diterima</a>
+        <a href="<?= base_url(); ?>complaint/get/diproses" class="btn-status">Diproses</a>
+        <a href="<?= base_url(); ?>complaint/get/selesai" class="btn-status">Selesai</a>
+      </div>
     </div>
     <div class="wrapper-card__history">
-      <?php $i = 1;
-      foreach ($reports as $report) : ?>
-        <div class="card__history">
-          <h2><?= $report['judul']; ?></h2>
-          <?php if ($report['status'] == 'diterima') : ?>
-            <p class="status__history approved-complaint"><?= $report['status']; ?></p>
-          <?php elseif ($report['status'] == 'diproses') : ?>
-            <p class="status__history onprocess-complaint"><?= $report['status']; ?></p>
-          <?php else : ?>
-            <p class="status__history done-complaint"><?= $report['status']; ?></p>
-          <?php endif; ?>
-          <div class="icon__history mt-4">
-            <i class="ri-attachment-2"></i>
-            <p><?= $report['categories']; ?></p>
+      <?php if ($reports) : ?>
+        <?php $i = 1;
+        foreach ($reports as $report) : ?>
+          <div class="card__history">
+            <h2><?= $report['judul']; ?></h2>
+            <?php if ($report['status'] == 'diterima') : ?>
+              <p class="status__history approved-complaint"><?= $report['status']; ?></p>
+            <?php elseif ($report['status'] == 'diproses') : ?>
+              <p class="status__history onprocess-complaint"><?= $report['status']; ?></p>
+            <?php else : ?>
+              <p class="status__history done-complaint"><?= $report['status']; ?></p>
+            <?php endif; ?>
+            <div class="icon__history mt-4">
+              <i class="ri-attachment-2"></i>
+              <p><?= $report['categories']; ?></p>
+            </div>
+            <div class="icon__history">
+              <i class="ri-barcode-line"></i>
+              <p><?= $report['kode_unik']; ?></p>
+            </div>
+            <div class="icon__history">
+              <i class="ri-time-line"></i>
+              <p>Dikirim : <span><?= date('H:i d-m-Y', $report['date_created']); ?></span></p>
+            </div>
+            <div class="flex-button__history">
+              <a href="<?= base_url(); ?>complaint/show/<?= $report['kode_unik']; ?>" class="btn-detail">Detail</a>
+              <a href="<?= base_url(); ?>complaint/print/<?= $report['kode_unik']; ?>" class="btn-print">Cetak</a>
+            </div>
           </div>
-          <div class="icon__history">
-            <i class="ri-barcode-line"></i>
-            <p><?= $report['kode_unik']; ?></p>
-          </div>
-          <div class="icon__history">
-            <i class="ri-time-line"></i>
-            <p>Dikirim : <span><?= date('H:i d-m-Y', $report['date_created']); ?></span></p>
-          </div>
-          <div class="flex-button__history">
-            <a href="<?= base_url(); ?>complaint/show/<?= $report['kode_unik']; ?>" class="btn-detail">Detail</a>
-            <a href="<?= base_url(); ?>complaint/print/<?= $report['kode_unik']; ?>" class="btn-print">Cetak</a>
-          </div>
+        <?php endforeach; ?>
+      <?php else : ?>
+        <div class="empty-data">
+          <img src="<?= base_url(); ?>assets/img/empty.png" alt="Ilustrasi empty data">
+          <p>Yahhhh, belum ada data yang kamu cari!</p>
         </div>
-      <?php endforeach; ?>
+      <?php endif; ?>
     </div>
   </section>
 

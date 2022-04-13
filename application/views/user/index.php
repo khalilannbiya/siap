@@ -75,15 +75,15 @@
       </div>
       <div class="wrapper-cards__statistik">
         <div class="card-statistik">
-          <p>2000</p>
+          <p><?= $statistik[0]; ?></p>
           <h3>Diterima</h3>
         </div>
         <div class="card-statistik">
-          <p>2000</p>
+          <p><?= $statistik[1]; ?></p>
           <h3>Diproses</h3>
         </div>
         <div class="card-statistik">
-          <p>2000</p>
+          <p><?= $statistik[2]; ?></p>
           <h3>Selesai</h3>
         </div>
       </div>
