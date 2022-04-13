@@ -33,12 +33,25 @@ class ModelComplaint extends CI_Model
       ->get('aduan')->result_array();
   }
 
-  public function getDataById($unic)
+  public function searchComplaintForUser()
   {
     $dataUser =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-    // var_dump($dataUser);
-    // var_dump($dataUser['email']);
 
+
+    $keyword = $this->input->post('keyword', true);
+    return $this->db->like(['categories' => $keyword, 'email' => $dataUser['email']])
+      ->or_like('status', $keyword)
+      ->or_like('kode_unik', $keyword)
+      ->order_by('id', 'DESC')
+      ->get('aduan')->result_array();
+  }
+
+  public function getDataById($unic)
+  {
+    // Menampilkan data dari table user yang email nya sesuai session email, dan ambil datu baris saja
+    $dataUser =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+    // Menampilkan data dari table aduan yang kode_unik nya sama dengan dikirimkan oleh user melalui method get di url, dan emailnya sama dengan user yang memiliki email sesuai session
     return $this->db->get_where('aduan', ['kode_unik' => $unic, 'email' => $dataUser['email']])->row_array();
   }
 }

@@ -68,6 +68,10 @@ class Complaint extends CI_Controller
     $data['title'] = "Riwayat";
     $data['session_cek'] = $this->session->userdata('role_id') == 2;
     $data['reports'] = $this->ModelComplaint->getDataByEmailSession();
+
+    if ($this->input->post('keyword')) {
+      $data['reports'] = $this->ModelComplaint->searchComplaintForUser();
+    }
     $this->load->view('templates-user/header_home', $data);
     $this->load->view('user/history', $data);
     $this->load->view('templates-user/footer');

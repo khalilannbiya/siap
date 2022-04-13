@@ -36,16 +36,16 @@
             <option value="<?= $category; ?>"><?= $category; ?></option>
           <?php endforeach; ?>
         </select>
-        <div class="form-text"><?= form_error('categories'); ?></div>
+        <div class="form-text text-danger"><?= form_error('categories'); ?></div>
       </div>
       <div class="mb-3">
         <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan judul" value="<?= set_value('judul'); ?>">
-        <div class="form-text"><?= form_error('judul'); ?></div>
+        <div class="form-text text-danger"><?= form_error('judul'); ?></div>
       </div>
       <div class="form-floating mb-3">
         <textarea name="body" id="body" class="form-control" placeholder="Isi aduan"></textarea>
         <label for="body">Isi aduan</label>
-        <div class="form-text"><?= form_error('body'); ?></div>
+        <div class="form-text text-danger"><?= form_error('body'); ?></div>
       </div>
     </section>
 

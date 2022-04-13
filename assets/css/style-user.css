@@ -609,6 +609,36 @@ nav ul .btn-nav {
   padding: 10%;
 }
 
+.wrapper-search__history .input-group .form-control {
+  font-size: 1vw;
+  padding: 0.5vw 1vw;
+  background-color: transparent;
+  height: 3vw;
+}
+
+.wrapper-search__history .btn-search {
+  height: 3vw;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  width: 7vw;
+  color: var(--light);
+}
+
+.wrapper-search__history {
+  background-color: #f3f3f3;
+  padding: 4%;
+  border-radius: 20px;
+  margin: 0 auto 5vw auto;
+  width: 60%;
+  box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.11);
+  -webkit-box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.11);
+  -moz-box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.11);
+}
+
 .section-history .wrapper-card__history {
   display: flex;
   gap: 5%;
@@ -635,14 +665,28 @@ nav ul .btn-nav {
 }
 
 .card__history h2 {
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   text-transform: capitalize;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.approved-complaint {
+  background-color: #ACD1AF;
+  color: #175e35;
+}
+
+.onprocess-complaint {
+  background-color: #EEEE9B;
+  color: #585c19;
+}
+
+.done-complaint {
+  background-color: #F47174;
+  color: #4e1c1d;
 }
 
 .status__history {
-  background-color: #ACD1AF;
-  color: #175e35;
   display: inline-block;
   padding: .5vw 3vw;
   border-radius: 100px;
@@ -650,6 +694,7 @@ nav ul .btn-nav {
   font-weight: 600;
   text-transform: capitalize;
   margin-top: 1vw;
+  margin-bottom: 0;
 }
 
 .icon__history {
@@ -657,6 +702,60 @@ nav ul .btn-nav {
   gap: 10px;
   font-size: 1.2vw;
   font-weight: 600;
+}
+
+.flex-button__history {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+
+}
+
+.flex-button__history .btn-detail {
+  width: 40%;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.3vw;
+  transition: all 1s;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  height: 3vw;
+}
+
+.flex-button__history .btn-detail:hover {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--light);
+  transition: all 1s;
+}
+
+
+.flex-button__history .btn-print {
+  width: 40%;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--light);
+  font-weight: 600;
+  font-size: 1.3vw;
+  transition: all 1s;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  height: 3vw;
+}
+
+.flex-button__history .btn-print:hover {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  transition: all 1s;
 }
 
 /* Detail */
@@ -983,6 +1082,81 @@ nav ul .btn-nav {
   .data-aduan h2 {
     margin-top: 4vw;
   }
+
+  /* Riwayat */
+  .section-history {
+    padding: 15% 5% 10% 5%;
+  }
+
+
+  .wrapper-search__history {
+    margin: 0 auto 6vw auto;
+    width: 80%;
+  }
+
+  .wrapper-search__history .input-group .form-control {
+    font-size: 2vw;
+    padding: .5vw 3vw;
+    background-color: transparent;
+    height: 6vw;
+  }
+
+  .wrapper-search__history .btn-search {
+    height: 6vw;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    width: 15vw;
+    color: var(--light);
+  }
+
+  .card__history {
+    width: 45%;
+    padding: 3%;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 2vw;
+    transition: all 1s;
+  }
+
+  .section-history .wrapper-card__history {
+    gap: 5%;
+  }
+
+  .card__history h2 {
+    font-size: 1.7vw;
+  }
+
+  .status__history {
+    padding: .5vw 3vw;
+    font-size: 1.3vw;
+    margin-top: 1vw;
+    margin-bottom: 0;
+  }
+
+  .icon__history {
+    font-size: 1.3vw;
+  }
+
+  .flex-button__history {
+    gap: 10%;
+
+  }
+
+  .flex-button__history .btn-detail {
+    width: 45%;
+    font-size: 1.5vw;
+    height: 3.5vw;
+  }
+
+  .flex-button__history .btn-print {
+    width: 45%;
+    font-size: 1.5vw;
+    height: 3.5vw;
+  }
 }
 
 @media screen and (max-width: 768px) {}
@@ -1251,5 +1425,81 @@ nav ul .btn-nav {
 
   .form-complaint textarea, .form-complaint .form-floating textarea {
     height: 100px;
+  }
+
+  /* Riwayat */
+  .section-history {
+    padding: 20% 5% 10% 5%;
+  }
+
+
+  .wrapper-search__history {
+    margin: 0 auto 9vw auto;
+    width: 90%;
+  }
+
+  .wrapper-search__history .input-group .form-control {
+    font-size: 3vw;
+    padding: 1vw 3vw;
+    background-color: transparent;
+    height: 8vw;
+  }
+
+  .wrapper-search__history .btn-search {
+    height: 8vw;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    width: 15vw;
+    color: var(--light);
+  }
+
+  .section-history .wrapper-card__history {
+    gap: 5%;
+  }
+
+  .card__history {
+    width: 100%;
+    padding: 5%;
+    cursor: pointer;
+    margin-top: 4vw;
+    transition: all 1s;
+  }
+
+  .card__history h2 {
+    font-size: 3.5vw;
+  }
+
+  .status__history {
+    padding: 1.3vw 6vw;
+    font-size: 3vw;
+    margin-top: 2vw;
+    margin-bottom: 0;
+  }
+
+  .icon__history {
+    font-size: 3vw;
+    margin-bottom: -2vw;
+  }
+
+  .flex-button__history {
+    gap: 3vw;
+    flex-direction: column;
+
+  }
+
+  .flex-button__history .btn-detail {
+    width: 100%;
+    font-size: 3vw;
+    height: 7.5vw;
+  }
+
+  .flex-button__history .btn-print {
+    width: 100%;
+    font-size: 3vw;
+    height: 7.5vw;
   }
 }
