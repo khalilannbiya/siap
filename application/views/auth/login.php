@@ -20,10 +20,12 @@
     <p>Belum punya akun? <a href="<?= base_url(); ?>auth/registration">Daftar</a></p>
     <form class="form-auth login-page" action="<?= base_url(); ?>auth/" method="POST">
       <div class="mb-4">
+        <label for="email" class="form-label">Alamat email</label>
         <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan email" value="<?= set_value('email'); ?>">
         <div class="form-text"><?= form_error('email'); ?></div>
       </div>
       <div class="mb-4">
+        <label for="password" class="form-label">Password</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Password" aria-label="Password">
         <div class="form-text"><?= form_error('password'); ?></div>
       </div>
