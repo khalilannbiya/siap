@@ -9,36 +9,39 @@
         <div class="wrapper-cta">
           <?php if ($session_cek) : ?>
             <a href="<?= base_url(); ?>complaint/add" class="btn btn-primary btn-cta">Mulai buat aduan</a>
+            <a href="<?= base_url(); ?>complaint/get" class="btn btn-outline-primary btn-cta-secondary">Lacak aduan</a>
           <?php else : ?>
             <a href="<?= base_url(); ?>auth" class="btn btn-primary btn-cta">Mulai buat aduan</a>
+            <a href="#uniccode-search-section" class="btn btn-outline-primary btn-cta-secondary">Lacak aduan</a>
           <?php endif; ?>
-          <a href="#uniccode-search-section" class="btn btn-outline-primary btn-cta-secondary">Lacak aduan</a>
         </div>
       </div>
       <img src="<?= base_url(); ?>assets/img/welcome.png" alt="Welcoming Image" />
     </div>
   </section>
-  <!-- Section Lacak -->
-  <section id="uniccode-search-section">
-    <div class="wrapper-uniccode">
-      <h1>Cari dan lacak aduan Anda!</h1>
-      <p>Gunakan kode unik aduan untuk mengetahui kemajuan tindak lanjut aduan Anda. Kode unik ini didapatkan ketika aduan di kirim, silahkan cek kembali detail dari aduan yang anda kirimkan.</p>
-      <div class="wrapper-form">
-        <form action="" method="POST">
-          <div id="otp" class="inputs">
-            <input class="text-center form-control rounded" type="text" id="first" name="first" maxlength=" 1" />
-            <input class="text-center form-control rounded" type="text" id="second" name="second" maxlength="1" />
-            <input class="text-center form-control rounded" type="text" id="third" name="third" maxlength=" 1" />
-            <span>-</span>
-            <input class="text-center form-control rounded" type="text" id="fourth" name="fourth" maxlength="1" />
-            <input class="text-center form-control rounded" type="text" id="fifth" name="fifth" maxlength=" 1" />
-            <input class="text-center form-control rounded" type="text" id="sixth" name="sixth" maxlength=" 1" />
-          </div>
-          <button class="btn btn-primary" type="submit" name="lacak">Lacak</button>
-        </form>
+  <?php if (!$session_cek) : ?>
+    <!-- Section Lacak -->
+    <section id="uniccode-search-section">
+      <div class="wrapper-uniccode">
+        <h1>Cari dan lacak aduan Anda!</h1>
+        <p>Gunakan kode unik aduan untuk mengetahui kemajuan tindak lanjut aduan Anda. Kode unik ini didapatkan ketika aduan di kirim, silahkan cek kembali detail dari aduan yang anda kirimkan.</p>
+        <div class="wrapper-form">
+          <form action="<?= base_url(); ?>home/lacak" method="POST">
+            <div id="otp" class="inputs">
+              <input class="text-center form-control rounded" type="text" id="first" name="first" maxlength=" 1" />
+              <input class="text-center form-control rounded" type="text" id="second" name="second" maxlength="1" />
+              <input class="text-center form-control rounded" type="text" id="third" name="third" maxlength=" 1" />
+              <span>-</span>
+              <input class="text-center form-control rounded" type="text" id="fourth" name="fourth" maxlength="1" />
+              <input class="text-center form-control rounded" type="text" id="fifth" name="fifth" maxlength=" 1" />
+              <input class="text-center form-control rounded" type="text" id="sixth" name="sixth" maxlength=" 1" />
+            </div>
+            <button class="btn btn-primary" type="submit" name="lacak">Lacak</button>
+          </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  <?php endif; ?>
 
   <!-- Cards Step -->
   <section id="cards-step-section">

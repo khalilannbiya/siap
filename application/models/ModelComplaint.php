@@ -70,4 +70,22 @@ class ModelComplaint extends CI_Model
     $done = $this->db->get_where('aduan', ['status' => "selesai"])->num_rows();
     return [$approved, $onprocess, $done];
   }
+
+  public function getDataByUnicCode()
+  {
+    $data = [
+      'first' => $this->input->post('first', true),
+      'second' => $this->input->post('second', true),
+      'third' => $this->input->post('third', true),
+      'fourth' => $this->input->post('fourth', true),
+      'fifth' => $this->input->post('fifth', true),
+      'sixth' => $this->input->post('sixth', true),
+    ];
+    $keyword = implode("", $data);
+
+    return $this->db->select('name, categories, judul, body, status, kode_unik, date_created')
+      ->where(['kode_unik' => $keyword])
+      ->get('aduan')->row_array();
+    // return $this->db->get_where('aduan', ['kode' => $keyword])->row_array();
+  }
 }

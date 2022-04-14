@@ -74,11 +74,16 @@
       </nav>
     </header>
   <?php else : ?>
-    <!-- Alert Logout -->
-    <?php if ($this->session->flashdata('message')) : ?>
-      <div class="alert my-alert alert-success alert-dismissible fade show fixed-top container-sm" role="alert" id="myAlert">
-        <strong>Yeayyyyy</strong> <?= $this->session->flashdata('message'); ?>
-      </div>
+    <?php if ($this->session->flashdata()) : ?>
+      <?php if ($this->session->flashdata('message')) : ?>
+        <div class="alert my-alert alert-success alert-dismissible fade show fixed-top container-sm" role="alert" id="myAlert">
+          <strong>Yeayyyyy</strong> <?= $this->session->flashdata('message'); ?>
+        </div>
+      <?php elseif ($this->session->flashdata('messageWrong')) : ?>
+        <div class="alert my-alert alert-danger alert-dismissible fade show fixed-top container-sm" role="alert" id="myAlert">
+          <strong>Yahhhhh</strong> <?= $this->session->flashdata('messageWrong'); ?>
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
     <!-- ======================= Navbar ======================= -->
     <header>
@@ -90,7 +95,7 @@
         </div>
         <ul class="nav-links">
           <li>
-            <a href="#welcoming-section">Beranda</a>
+            <a href="<?= base_url(); ?>home">Beranda</a>
           </li>
           <li>
             <a href="#section-statistik">Statistik</a>
