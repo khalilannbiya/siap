@@ -28,6 +28,16 @@ class User extends CI_Controller
     $this->load->view('templates-user/footer', $data);
   }
 
+  public function myprofile()
+  {
+    $data['title'] = "My Profile";
+    $data['session_cek'] = $this->session->userdata('role_id') == 2;
+    $data['user'] = $this->ModelUser->getUserByEmail();
+    $this->load->view('templates-user/header_home', $data);
+    $this->load->view('user/profile', $data);
+    $this->load->view('templates-user/footer', $data);
+  }
+
   // public function index()
   // {
   //   $data['title'] = "My Profile";

@@ -56,7 +56,7 @@
             <a href="<?= base_url(); ?>complaint/get" class="<?= $title === "Riwayat" ? "active" : ""; ?>">Riwayat</a>
           </li>
           <li>
-            <a href="#about-us">My Profile</a>
+            <a href="<?= base_url(); ?>user/myprofile" class="<?= $title === "My Profile" ? "active" : ""; ?>">My Profile</a>
           </li>
           <li class="btn-nav">
             <a href="<?= base_url(); ?>auth/logout" class="btn-login">Logout</a>
