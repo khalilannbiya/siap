@@ -13,6 +13,25 @@ class Complaint extends CI_Controller
     }
   }
 
+  public function index()
+  {
+
+    // Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan user, jadi tidak boleh masuk ke controller user
+    if ($this->session->userdata('role_id') != 1) {
+      redirect('user');
+    }
+
+    $email = $this->session->userdata('email');
+    $data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
+    $data['title'] = "Semua Data Aduan";
+    $data['complaints'] = $this->ModelComplaint->getAllDataAduan();
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('admin/all', $data);
+    $this->load->view('templates/footer');
+  }
+
   public function add()
   {
     // Function tambah data aduan bagian user

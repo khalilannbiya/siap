@@ -9,6 +9,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <!-- ========= favicon ========= -->
+  <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/favicon.png" type="image/x-icon" />
+
   <title>SIAP | <?= $title; ?></title>
 
   <!-- Custom fonts for this template-->
@@ -17,6 +20,7 @@
 
   <!-- Custom styles for this template-->
   <link href="<?= base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+
 
 </head>
 

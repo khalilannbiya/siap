@@ -89,4 +89,16 @@ class ModelComplaint extends CI_Model
       ->get('aduan')->row_array();
     // return $this->db->get_where('aduan', ['kode' => $keyword])->row_array();
   }
+
+  public function getAllDataAduanLimit()
+  {
+    return $this->db->order_by('id', 'DESC')
+      ->get('aduan', 5)->result_array();
+  }
+
+  public function getAllDataAduan()
+  {
+    return $this->db->order_by('id', 'DESC')
+      ->get('aduan')->result_array();
+  }
 }

@@ -22,8 +22,10 @@ class Admin extends CI_Controller
   {
     $data['title'] = "Dashboard";
     $email = $this->session->userdata('email');
-    $data['user'] = $this->db->get_where('user', ['email' => $email])->row_array();
-    $data['complaints'] = $this->ModelComplaint->getDataNumByStatus();
+    $data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
+    $data['complaintsnum'] = $this->ModelComplaint->getDataNumByStatus();
+    $data['complaints'] = $this->ModelComplaint->getAllDataAduanLimit();
+    $data['users'] = $this->ModelUser->getAllDataUser();
 
     $this->load->view('templates/header', $data);
     $this->load->view('templates/sidebar', $data);

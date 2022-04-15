@@ -17,7 +17,7 @@
                 Diterima
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                <?= $complaints['0']; ?>
+                <?= $complaintsnum['0']; ?>
               </div>
             </div>
             <div class="col-auto">
@@ -37,7 +37,7 @@
                 Diproses
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                <?= $complaints['1']; ?>
+                <?= $complaintsnum['1']; ?>
               </div>
             </div>
             <div class="col-auto">
@@ -57,7 +57,7 @@
                 selesai
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                <?= $complaints['2']; ?>
+                <?= $complaintsnum['2']; ?>
               </div>
             </div>
             <div class="col-auto">
@@ -77,7 +77,7 @@
                 semua
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
-                <?= $complaints['3']; ?>
+                <?= $complaintsnum['3']; ?>
               </div>
             </div>
             <div class="col-auto">
@@ -85,6 +85,78 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mt-4">
+    <!-- Table Data aduan -->
+    <div class="col-xl col-md-12 col-sm">
+      <h1 class="h3 mb-3 text-gray-800">Data Aduan</h1>
+      <div class="table-responsive">
+        <table class="table table-striped table-borderless">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Email</th>
+              <th scope="col">Kategori</th>
+              <th scope="col">Status</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $i = 1;
+            foreach ($complaints as $complaint) : ?>
+              <tr>
+                <th scope="row"><?= $i++; ?></th>
+                <td><?= $complaint['name']; ?></td>
+                <td><?= $complaint['categories']; ?></td>
+                <?php if ($complaint['status'] == 'diterima') : ?>
+                  <td class="text-capitalize text-success font-weight-bold"><?= $complaint['status']; ?></td>
+                <?php elseif ($complaint['status'] == 'diproses') : ?>
+                  <td class="text-capitalize text-warning font-weight-bold"><?= $complaint['status']; ?></td>
+                <?php else : ?>
+                  <td class="text-capitalize text-danger font-weight-bold"><?= $complaint['status']; ?></td>
+                <?php endif; ?>
+                <td><?= date('d-m-Y', $complaint['date_created']); ?></td>
+                <td>
+                  <a href="" class="btn btn-primary">Detail</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xl col-md-12 col-sm">
+      <h1 class="h3 mb-3 text-gray-800">Data User</h1>
+      <div class="table-responsive">
+        <table class="table table-striped table-borderless">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Email</th>
+              <th scope="col">NIK</th>
+              <th scope="col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $i = 1;
+            foreach ($users as $user) : ?>
+              <tr>
+                <th scope="row"><?= $i++; ?></th>
+                <td><?= $user['name']; ?></td>
+                <td><?= $user['email']; ?></td>
+                <td><?= $user['nik']; ?></td>
+                <td>
+                  <a href="" class="btn btn-primary">Detail</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
