@@ -43,7 +43,7 @@
         <div class="form-text text-danger"><?= form_error('judul'); ?></div>
       </div>
       <div class="form-floating mb-3">
-        <textarea name="body" id="body" class="form-control" placeholder="Isi aduan"><?= set_value('body'); ?></textarea>
+        <textarea name="body" id="body" rows="4" class="form-control" placeholder="Isi aduan"><?= set_value('body'); ?></textarea>
         <label for="body">Isi aduan</label>
         <div class="form-text text-danger"><?= form_error('body'); ?></div>
       </div>
