@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
   <?php if ($this->session->flashdata()) : ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
       <strong>Yeayyyy!</strong> <?= $this->session->flashdata('message'); ?>.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -65,19 +65,17 @@
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>admin/detailAduan/<?= $complaint['kode_unik']; ?>">Detail</a>
-                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/hapusAduan/<?= $complaint['kode_unik']; ?>" onclick="confirm('Yakin ingin menghapus data ini?')">Hapus</a>
-                    <a class="dropdown-item text-success font-weight-bold" href="#">Ubah</a>
+                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/hapusAduan/<?= $complaint['kode_unik']; ?>">Hapus</a>
+                    <a class="dropdown-item text-success font-weight-bold" href="<?= base_url(); ?>complaint/update/<?= $complaint['kode_unik']; ?>">Ubah</a>
                   </div>
                 </div>
               </td>
               </tr>
             <?php endforeach; ?>
           <?php else : ?>
-            <tr>
-              <div class="alert alert-danger" role="alert">
-                Yahh, data nya belum ada!
-              </div>
-            </tr>
+            <div class="alert alert-danger" role="alert">
+              Yahhhhhh, data nya belum ada!
+            </div>
           <?php endif; ?>
       </tbody>
     </table>

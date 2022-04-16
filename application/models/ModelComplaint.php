@@ -127,4 +127,16 @@ class ModelComplaint extends CI_Model
   {
     return $this->db->delete('aduan', ['kode_unik' => $unic]);
   }
+
+  public function ubahDataAduan()
+  {
+    $data = [
+      'categories' => $this->input->post('categories', true),
+      'judul' => $this->input->post('judul', true),
+      'body' => $this->input->post('body', true),
+    ];
+
+    $this->db->where('id', $this->input->post('id'));
+    $this->db->update('aduan', $data);
+  }
 }

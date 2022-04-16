@@ -106,25 +106,31 @@
             </tr>
           </thead>
           <tbody>
-            <?php $i = 1;
-            foreach ($complaints as $complaint) : ?>
-              <tr>
-                <th scope="row"><?= $i++; ?></th>
-                <td><?= $complaint['name']; ?></td>
-                <td><?= $complaint['categories']; ?></td>
-                <?php if ($complaint['status'] == 'diterima') : ?>
-                  <td class="text-capitalize text-success font-weight-bold"><?= $complaint['status']; ?></td>
-                <?php elseif ($complaint['status'] == 'diproses') : ?>
-                  <td class="text-capitalize text-warning font-weight-bold"><?= $complaint['status']; ?></td>
-                <?php else : ?>
-                  <td class="text-capitalize text-danger font-weight-bold"><?= $complaint['status']; ?></td>
-                <?php endif; ?>
-                <td><?= date('d-m-Y', $complaint['date_created']); ?></td>
-                <td>
-                  <a href="" class="btn btn-primary">Detail</a>
-                </td>
-              </tr>
-            <?php endforeach; ?>
+            <?php if ($complaints) : ?>
+              <?php $i = 1;
+              foreach ($complaints as $complaint) : ?>
+                <tr>
+                  <th scope="row"><?= $i++; ?></th>
+                  <td><?= $complaint['name']; ?></td>
+                  <td><?= $complaint['categories']; ?></td>
+                  <?php if ($complaint['status'] == 'diterima') : ?>
+                    <td class="text-capitalize text-success font-weight-bold"><?= $complaint['status']; ?></td>
+                  <?php elseif ($complaint['status'] == 'diproses') : ?>
+                    <td class="text-capitalize text-warning font-weight-bold"><?= $complaint['status']; ?></td>
+                  <?php else : ?>
+                    <td class="text-capitalize text-danger font-weight-bold"><?= $complaint['status']; ?></td>
+                  <?php endif; ?>
+                  <td><?= date('d-m-Y', $complaint['date_created']); ?></td>
+                  <td>
+                    <a href="<?= base_url(); ?>admin/detailAduan/<?= $complaint['kode_unik']; ?>" class="btn btn-primary">Detail</a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            <?php else : ?>
+              <div class="alert alert-danger" role="alert">
+                Yahhhhhh, data nya belum ada!
+              </div>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>

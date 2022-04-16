@@ -33,7 +33,7 @@
         <select class="form-select text-capitalize" aria-label="Default select example" name="categories" id="categories">
           <option value="" selected>Pilih Kategori</option>
           <?php foreach ($categories as $category) : ?>
-            <option value="<?= $category; ?>"><?= $category; ?></option>
+            <option value="<?= $category['categories']; ?>"><?= $category['categories']; ?></option>
           <?php endforeach; ?>
         </select>
         <div class="form-text text-danger"><?= form_error('categories'); ?></div>

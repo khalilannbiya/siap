@@ -39,16 +39,15 @@ class Complaint extends CI_Controller
 
   public function update($unic)
   {
-    $data['title'] = "Ubah Data Aduan";
-  }
-
-  public function add()
-  {
-    // Function tambah data aduan bagian user
-    // Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan user, jadi tidak boleh masuk ke controller user
-    if ($this->session->userdata('role_id') != 2) {
-      redirect('admin');
+    if ($this->session->userdata('role_id') != 1) {
+      redirect('user');
     }
+
+    $data['title'] = "Ubah Data Aduan";
+    $email = $this->session->userdata('email');
+    $data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
+    $data['complaint']  = $this->ModelComplaint->getDataAduanByCode($unic);
+    $data['categories'] = $this->ModelCategories->getDataALl();
 
     $this->form_validation->set_rules(
       'categories',
@@ -61,11 +60,9 @@ class Complaint extends CI_Controller
     $this->form_validation->set_rules(
       'judul',
       'Judul',
-      'required|trim|max_length[40]|min_length[35]',
+      'required|trim',
       [
         'required' => '%s harus diisi!.',
-        'max_length' => 'Jangan terlalu panjang!',
-        'min_length' => 'Jangan terlalu pendek'
       ]
     );
     $this->form_validation->set_rules(
@@ -78,10 +75,58 @@ class Complaint extends CI_Controller
     );
 
     if (!$this->form_validation->run()) {
-      $data['session_cek'] = $this->session->userdata('role_id') == 2;
-      $data['title'] = "Buat Aduan";
-      $data['user']  = $this->ModelUser->getUserByEmail();
-      $data['categories'] = ['Bencana', 'Pencurian', 'Fasilitas'];
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('templates/topbar', $data);
+      $this->load->view('admin/ubah', $data);
+      $this->load->view('templates/footer');
+    } else {
+      $this->ModelComplaint->ubahDataAduan();
+      $this->session->set_flashdata('message', 'Data aduan telah di ubah!');
+      redirect('complaint');
+    }
+  }
+
+  public function add()
+  {
+    // Function tambah data aduan bagian user
+    // Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan user, jadi tidak boleh masuk ke controller user
+    if ($this->session->userdata('role_id') != 2) {
+      redirect('admin');
+    }
+
+    $data['session_cek'] = $this->session->userdata('role_id') == 2;
+    $data['title'] = "Buat Aduan";
+    $data['user']  = $this->ModelUser->getUserByEmail();
+    $data['categories'] = $this->ModelCategories->getDataALl();
+
+    $this->form_validation->set_rules(
+      'categories',
+      'Kategori',
+      'required|trim',
+      [
+        'required' => '%s harus diisi!.',
+      ]
+    );
+    $this->form_validation->set_rules(
+      'judul',
+      'Judul',
+      'required|trim|max_length[40]',
+      [
+        'required' => '%s harus diisi!.',
+        'max_length' => 'Jangan terlalu panjang!',
+      ]
+    );
+    $this->form_validation->set_rules(
+      'body',
+      'Isi',
+      'required|trim',
+      [
+        'required' => '%s harus diisi!.'
+      ]
+    );
+
+    if (!$this->form_validation->run()) {
       $this->load->view('templates-user/header_home', $data);
       $this->load->view('user/complaint', $data);
       $this->load->view('templates-user/footer');
