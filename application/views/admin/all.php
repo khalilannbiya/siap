@@ -67,6 +67,15 @@
                     <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>admin/detailAduan/<?= $complaint['kode_unik']; ?>">Detail</a>
                     <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/hapusAduan/<?= $complaint['kode_unik']; ?>">Hapus</a>
                     <a class="dropdown-item text-success font-weight-bold" href="<?= base_url(); ?>complaint/update/<?= $complaint['kode_unik']; ?>">Ubah</a>
+                    <?php if ($complaint['status'] == "diterima") : ?>
+                      <hr class="dropdown-divider">
+                      <a class="dropdown-item text-warning font-weight-bold" href="<?= base_url(); ?>admin/process/<?= $complaint['kode_unik']; ?>">Proses</a>
+                    <?php elseif ($complaint['status'] == "diproses") : ?>
+                      <hr class="dropdown-divider">
+                      <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/selesai/<?= $complaint['kode_unik']; ?>">Selesai</a>
+                    <?php else : ?>
+
+                    <?php endif; ?>
                   </div>
                 </div>
               </td>

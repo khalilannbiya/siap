@@ -139,4 +139,20 @@ class ModelComplaint extends CI_Model
     $this->db->where('id', $this->input->post('id'));
     $this->db->update('aduan', $data);
   }
+
+  public function ubahToProcess($unic)
+  {
+    $data =  ['status' => 'diproses'];
+
+    $this->db->where('kode_unik', $unic);
+    $this->db->update('aduan', $data);
+  }
+
+  public function ubahToSelesai($unic)
+  {
+    $data =  ['status' => 'selesai'];
+
+    $this->db->where('kode_unik', $unic);
+    $this->db->update('aduan', $data);
+  }
 }
