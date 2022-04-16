@@ -102,4 +102,41 @@ class Admin extends CI_Controller
     $this->session->set_flashdata('message', 'Status aduan berhasil diubah menjadi Selesai!');
     redirect('complaint/index/selesai');
   }
+
+  public function user()
+  {
+    $email = $this->session->userdata('email');
+    $data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
+    $data['title'] = "Data User";
+    if ($this->input->post('pencarian')) {
+      $data['users'] = $this->ModelUser->searchByKeyword();
+    } else {
+      $data['users'] = $this->ModelUser->getAllUser();
+    }
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('admin/data-user', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function detailUser($id)
+  {
+    $data['title'] = "Detail User";
+    $email = $this->session->userdata('email');
+    $data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
+    $data['user'] = $this->ModelUser->getDataAduanById($id);
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('admin/detail-user', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function deleteUser($id)
+  {
+    $this->ModelUser->deleteUser($id);
+    $this->session->set_flashdata('message', 'Data user telah dihapus!');
+    redirect('admin/user');
+  }
 }

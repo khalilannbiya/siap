@@ -33,6 +33,13 @@
 
   <!-- Nav Item - Categories -->
   <li class="nav-item <?= $title == "Tambah Kategori" ? "active" : ""; ?>">
+    <a class="nav-link" href="<?= base_url(); ?>admin/user">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Data User</span></a>
+  </li>
+
+  <!-- Nav Item - Categories -->
+  <li class="nav-item <?= $title == "Tambah Kategori" ? "active" : ""; ?>">
     <a class="nav-link" href="<?= base_url(); ?>admin/managementCategories">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Kategori</span></a>
