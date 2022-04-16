@@ -25,11 +25,21 @@ class Complaint extends CI_Controller
     $data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
     $data['title'] = "Semua Data Aduan";
     $data['complaints'] = $this->ModelComplaint->getAllDataAduan();
+    if ($this->input->post('keyword')) {
+      $data['complaints'] = $this->ModelComplaint->searchAduanByKeyword();
+    }
+
+
     $this->load->view('templates/header', $data);
     $this->load->view('templates/sidebar', $data);
     $this->load->view('templates/topbar', $data);
     $this->load->view('admin/all', $data);
     $this->load->view('templates/footer');
+  }
+
+  public function update($unic)
+  {
+    $data['title'] = "Ubah Data Aduan";
   }
 
   public function add()

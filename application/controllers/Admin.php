@@ -33,4 +33,24 @@ class Admin extends CI_Controller
     $this->load->view('admin/index', $data);
     $this->load->view('templates/footer');
   }
+
+  public function detailAduan($unic)
+  {
+    $data['title'] = "Detail Aduan";
+    $email = $this->session->userdata('email');
+    $data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
+    $data['detail'] = $this->ModelComplaint->getDataAduanByCode($unic);
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('admin/detail-aduan', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function hapusAduan($unic)
+  {
+    $data['complaint'] = $this->ModelComplaint->hapusDataAduan($unic);
+    $this->session->set_flashdata('message', 'Data aduan telah dihapus!');
+    redirect('complaint');
+  }
 }

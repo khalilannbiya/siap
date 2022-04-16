@@ -1,7 +1,86 @@
 <div class="container-fluid">
+
+  <?php if ($this->session->flashdata()) : ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Yeayyyy!</strong> <?= $this->session->flashdata('message'); ?>.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <?php endif; ?>
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Semua Data Aduan</h1>
+  </div>
+
+  <div class="row-sm mb-5">
+    <form action="<?= base_url(); ?>complaint" method="POST">
+      <div class="input-group mb-3">
+        <input type="text" name="keyword" class="form-control" placeholder="Masukkan kata kunci..." aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="table-responsive-xl">
+    <table class="table table-striped table-borderless table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Kategori</th>
+          <th scope="col">Status</th>
+          <th scope="col">Waktu dikirim</th>
+          <th scope="col">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ($complaints) : ?>
+          <?php $i = 1;
+          foreach ($complaints as  $complaint) : ?>
+            <?php if ($complaint['status'] == 'diterima') : ?>
+              <tr class="table-success font-weight-bold">
+              <?php elseif ($complaint['status'] == 'diproses') : ?>
+              <tr class="table-warning font-weight-bold">
+              <?php else : ?>
+              <tr class="table-danger font-weight-bold">
+              <?php endif; ?>
+              <th scope="row"><?= $i++; ?></th>
+              <td><?= $complaint['name']; ?></td>
+              <td><?= $complaint['categories']; ?></td>
+              <?php if ($complaint['status'] == 'diterima') : ?>
+                <td class="text-capitalize text-success font-weight-bold"><?= $complaint['status']; ?></td>
+              <?php elseif ($complaint['status'] == 'diproses') : ?>
+                <td class="text-capitalize text-warning font-weight-bold"><?= $complaint['status']; ?></td>
+              <?php else : ?>
+                <td class="text-capitalize text-danger font-weight-bold"><?= $complaint['status']; ?></td>
+              <?php endif; ?>
+              <td><?= date('d-m-Y', $complaint['date_created']); ?></td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                    Menu
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>admin/detailAduan/<?= $complaint['kode_unik']; ?>">Detail</a>
+                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/hapusAduan/<?= $complaint['kode_unik']; ?>" onclick="confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                    <a class="dropdown-item text-success font-weight-bold" href="#">Ubah</a>
+                  </div>
+                </div>
+              </td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else : ?>
+            <tr>
+              <div class="alert alert-danger" role="alert">
+                Yahh, data nya belum ada!
+              </div>
+            </tr>
+          <?php endif; ?>
+      </tbody>
+    </table>
   </div>
 
 

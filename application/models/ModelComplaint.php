@@ -101,4 +101,30 @@ class ModelComplaint extends CI_Model
     return $this->db->order_by('id', 'DESC')
       ->get('aduan')->result_array();
   }
+
+  public function searchAduanByKeyword()
+  {
+    $keyword = $this->input->post('keyword', true);
+
+    return $this->db->like('name', $keyword)
+      ->or_like('judul', $keyword)
+      ->or_like('nik', $keyword)
+      ->or_like('no_hp', $keyword)
+      ->or_like('email', $keyword)
+      ->or_like('categories', $keyword)
+      ->or_like('status', $keyword)
+      ->or_like('kode_unik', $keyword)
+      ->order_by('id', 'DESC')
+      ->get('aduan')->result_array();
+  }
+
+  public function getDataAduanByCode($unic)
+  {
+    return $this->db->get_where('aduan', ['kode_unik' => $unic])->row_array();
+  }
+
+  public function hapusDataAduan($unic)
+  {
+    return $this->db->delete('aduan', ['kode_unik' => $unic]);
+  }
 }
