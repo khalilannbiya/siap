@@ -51,8 +51,8 @@ setTimeout(() => {
 	myAlert.classList.toggle("hide-myalert");
 	setTimeout(() => {
 		myAlert.classList.toggle("d-none");
-	}, 2000);
-}, 4000);
+	}, 3000);
+}, 5000);
 
 // Edit responsive via js
 let rowLayout = document.getElementById("row-layout");
