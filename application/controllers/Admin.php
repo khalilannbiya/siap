@@ -93,13 +93,13 @@ class Admin extends CI_Controller
   {
     $this->ModelComplaint->ubahToProcess($unic);
     $this->session->set_flashdata('message', 'Status aduan berhasil diubah menjadi Diproses!');
-    redirect('complaint');
+    redirect('complaint/index/diproses');
   }
 
   public function selesai($unic)
   {
     $this->ModelComplaint->ubahToSelesai($unic);
     $this->session->set_flashdata('message', 'Status aduan berhasil diubah menjadi Selesai!');
-    redirect('complaint');
+    redirect('complaint/index/selesai');
   }
 }

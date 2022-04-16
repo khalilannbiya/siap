@@ -13,7 +13,7 @@
     <h1 class="h3 mb-0 text-gray-800">Semua Data Aduan</h1>
   </div>
 
-  <div class="row-sm mb-5">
+  <div class="row-sm mb-4">
     <form action="<?= base_url(); ?>complaint" method="POST">
       <div class="input-group mb-3">
         <input type="text" name="keyword" class="form-control" placeholder="Masukkan kata kunci..." aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -22,6 +22,13 @@
         </div>
       </div>
     </form>
+  </div>
+
+  <div class="row justify-content-center mb-4">
+    <a href="<?= base_url(); ?>complaint" class="col-md-2 mr-3 mt-2 btn btn-primary">Semua</a>
+    <a href="<?= base_url(); ?>complaint/index/diterima" class="col-md-2 mr-3 mt-2 btn btn-success">Diterima</a>
+    <a href="<?= base_url(); ?>complaint/index/diproses" class="col-md-2 mr-3 mt-2 btn btn-warning">Diproses</a>
+    <a href="<?= base_url(); ?>complaint/index/selesai" class="col-md-2 mr-3 mt-2 btn btn-danger">Selesai</a>
   </div>
 
   <div class="table-responsive-xl">

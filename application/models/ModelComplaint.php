@@ -54,6 +54,13 @@ class ModelComplaint extends CI_Model
       ->get('aduan')->result_array();
   }
 
+  public function searchByButtonStatus($status)
+  {
+
+    return $this->db->where(['status' => $status])->order_by('id', 'DESC')
+      ->get('aduan')->result_array();
+  }
+
   public function getDataById($unic)
   {
     // Menampilkan data dari table user yang email nya sesuai session email, dan ambil datu baris saja
@@ -99,6 +106,13 @@ class ModelComplaint extends CI_Model
   public function getAllDataAduan()
   {
     return $this->db->order_by('id', 'DESC')
+      ->get('aduan')->result_array();
+  }
+
+  public function getDataAduanByStatusDiterima()
+  {
+    return $this->db->where('status', 'diterima')
+      ->order_by('id', 'DESC')
       ->get('aduan')->result_array();
   }
 
