@@ -63,7 +63,7 @@ class ModelComplaint extends CI_Model
 
   public function getDataById($unic)
   {
-    // Menampilkan data dari table user yang email nya sesuai session email, dan ambil datu baris saja
+    // Menampilkan data dari table user yang email nya sesuai session email, dan ambil satu baris saja
     $dataUser =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
     // Menampilkan data dari table aduan yang kode_unik nya sama dengan dikirimkan oleh user melalui method get di url, dan emailnya sama dengan user yang memiliki email sesuai session
