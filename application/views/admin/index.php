@@ -157,7 +157,7 @@
                 <td><?= $user['email']; ?></td>
                 <td><?= $user['nik']; ?></td>
                 <td>
-                  <a href="" class="btn btn-primary">Detail</a>
+                  <a href="<?= base_url(); ?>admin/detailUser/<?= $user['id']; ?>" class="btn btn-primary">Detail</a>
                 </td>
               </tr>
             <?php endforeach; ?>
