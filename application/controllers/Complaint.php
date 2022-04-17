@@ -171,4 +171,29 @@ class Complaint extends CI_Controller
     $this->load->view('user/detail', $data);
     $this->load->view('templates-user/footer');
   }
+
+  public function print($unic)
+  {
+
+    $data['complaint'] = $this->ModelComplaint->getDataById($unic);
+
+    // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+    $this->load->library('pdfgenerator');
+
+    // title dari pdf
+    $data['title'] = "Cetak bukti aduan";
+
+    // filename dari pdf ketika didownload
+    $file_pdf = "Bukti Aduan " . $data['complaint']['name'];
+    // setting paper
+    $paper = 'A4';
+    //orientasi paper potrait / landscape
+    $orientation = "portrait";
+
+    // $html = $this->load->view('user/cetak_pdf', $this->data, true);
+    $html = $this->load->view('user/cetak_pdf', $data, true);
+
+    // run dompdf
+    $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+  }
 }
