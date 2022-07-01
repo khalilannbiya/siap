@@ -36,15 +36,23 @@ class ModelComplaint extends CI_Model
 
   public function searchComplaintForUser()
   {
-    $dataUser =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-
     $keyword = $this->input->post('keyword', true);
-    return $this->db->like(['categories' => $keyword, 'email' => $dataUser['email']])
-      ->or_like('status', $keyword)
-      ->or_like('kode_unik', $keyword)
-      ->order_by('id', 'DESC')
-      ->get('aduan')->result_array();
+    $userEmail = $this->session->userdata('email');
+
+    $this->db->select('reporting.id_aduan, user.name, user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->like('reporting.judul', $keyword);
+    $this->db->where('user.email', $userEmail);
+    $this->db->or_like('categories.categories', $keyword);
+    $this->db->where('user.email', $userEmail);
+    $this->db->or_like('reporting.kode_unik', $keyword);
+    $this->db->where('user.email', $userEmail);
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->result_array();
+
+    return $query;
   }
 
   public function searchByStatus($status)

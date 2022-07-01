@@ -4,7 +4,7 @@
     <div class="wrapper-search__history">
       <form action="<?= base_url(); ?>complaint/get" method="POST">
         <div class="input-group ">
-          <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Cari..." aria-label="Recipient's username" aria-describedby="button-addon2">
+          <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Cari by Judul, Kategori, Kode Unik ..." aria-label="Recipient's username" aria-describedby="button-addon2">
           <button class="btn-search" type="submit" name="cari" id="button-addon2">Cari</button>
         </div>
       </form>
@@ -15,12 +15,6 @@
         <a href="<?= base_url(); ?>complaint/get/selesai" class="btn-status">Selesai</a>
       </div>
     </div>
-    <?php
-    echo '<pre>';
-    print_r($reports);
-    echo '</pre>';
-
-    ?>
     <div class="wrapper-card__history">
       <?php if ($reports) : ?>
         <?php $i = 1;
