@@ -72,10 +72,10 @@ class ModelComplaint extends CI_Model
 
   public function getDataNumByStatus()
   {
-    $approved = $this->db->get_where('aduan', ['status' => "diterima"])->num_rows();
-    $onprocess = $this->db->get_where('aduan', ['status' => "diproses"])->num_rows();
-    $done = $this->db->get_where('aduan', ['status' => "selesai"])->num_rows();
-    $all = $this->db->get('aduan')->num_rows();
+    $approved = $this->db->get_where('reporting', ['status' => "diterima"])->num_rows();
+    $onprocess = $this->db->get_where('reporting', ['status' => "diproses"])->num_rows();
+    $done = $this->db->get_where('reporting', ['status' => "selesai"])->num_rows();
+    $all = $this->db->get('reporting')->num_rows();
     return [$approved, $onprocess, $done, $all];
   }
 
