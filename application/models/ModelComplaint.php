@@ -79,11 +79,17 @@ class ModelComplaint extends CI_Model
 
   public function getDataById($unic)
   {
-    // Menampilkan data dari table user yang email nya sesuai session email, dan ambil satu baris saja
-    $dataUser =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $userEmail = $this->session->userdata('email');
+    $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('user.email', $userEmail);
+    $this->db->where('reporting.kode_unik', $unic);
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->row_array();
 
-    // Menampilkan data dari table aduan yang kode_unik nya sama dengan dikirimkan oleh user melalui method get di url, dan emailnya sama dengan user yang memiliki email sesuai session
-    return $this->db->get_where('aduan', ['kode_unik' => $unic, 'email' => $dataUser['email']])->row_array();
+    return $query;
   }
 
   public function getDataNumByStatus()
