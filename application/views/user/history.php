@@ -15,6 +15,12 @@
         <a href="<?= base_url(); ?>complaint/get/selesai" class="btn-status">Selesai</a>
       </div>
     </div>
+    <?php
+    echo '<pre>';
+    print_r($reports);
+    echo '</pre>';
+
+    ?>
     <div class="wrapper-card__history">
       <?php if ($reports) : ?>
         <?php $i = 1;

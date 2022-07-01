@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
       <label for="alamat" class="form-label">Alamat</label>
-      <textarea name="alamat" id="alamat" class="form-control" value="<?= $user['address']; ?>" disabled><?= $user['address']; ?>"</textarea>
+      <textarea name="alamat" id="alamat" class="form-control" value="<?= $user['address']; ?>" disabled><?= $user['address']; ?></textarea>
     </div>
   </section>
   <!-- Section Form Complaint -->

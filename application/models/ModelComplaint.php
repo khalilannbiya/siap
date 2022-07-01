@@ -6,21 +6,7 @@ class ModelComplaint extends CI_Model
   public function insertData()
   {
     $kode_unik = mt_rand(000000, 999999);
-    // $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-    // $data = [
-    //   'name' => $user['name'],
-    //   'email' => $user['email'],
-    //   'no_hp' => $user['no_hp'],
-    //   'address' => $user['address'],
-    //   'nik' => $user['nik'],
-    //   'categories' => $this->input->post('categories', true),
-    //   'judul' =>  $this->input->post('judul', true),
-    //   'body' => $this->input->post('body', true),
-    //   'kode_unik' => $kode_unik,
-    //   'status' => 'diterima',
-    //   'date_created' => time()
 
-    // ];
     $data = [
       'user_id' => $this->input->post('userid', true),
       'judul' =>  $this->input->post('judul', true),
@@ -37,9 +23,19 @@ class ModelComplaint extends CI_Model
   public function getDataByEmailSession()
   {
     $userEmail = $this->session->userdata('email');
-    return $this->db->where('email', $userEmail)
-      ->order_by('id', 'DESC')
-      ->get('aduan')->result_array();
+    $this->db->select('*');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('user.email', $userEmail);
+    $query = $this->db->get()->result_array();
+
+    return $query;
+
+    // $userEmail = $this->session->userdata('email');
+    // return $this->db->where('email', $userEmail)
+    //   ->order_by('id_aduan', 'DESC')
+    //   ->get('reporting')->result_array();
   }
 
   public function searchComplaintForUser()
