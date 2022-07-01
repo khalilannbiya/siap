@@ -28,14 +28,10 @@ class ModelComplaint extends CI_Model
     $this->db->join('user', 'reporting.user_id = user.id_user');
     $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
     $this->db->where('user.email', $userEmail);
+    $this->db->order_by('id_aduan', 'DESC');
     $query = $this->db->get()->result_array();
 
     return $query;
-
-    // $userEmail = $this->session->userdata('email');
-    // return $this->db->where('email', $userEmail)
-    //   ->order_by('id_aduan', 'DESC')
-    //   ->get('reporting')->result_array();
   }
 
   public function searchComplaintForUser()
@@ -53,10 +49,17 @@ class ModelComplaint extends CI_Model
 
   public function searchByStatus($status)
   {
-    $dataUser =  $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $userEmail = $this->session->userdata('email');
+    $this->db->select('reporting.id_aduan, user.name, user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('user.email', $userEmail);
+    $this->db->where('reporting.status', $status);
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->result_array();
 
-    return $this->db->where(['status' => $status, 'email' => $dataUser['email']])->order_by('id', 'DESC')
-      ->get('aduan')->result_array();
+    return $query;
   }
 
   public function searchByButtonStatus($status)
