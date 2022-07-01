@@ -6,23 +6,32 @@ class ModelComplaint extends CI_Model
   public function insertData()
   {
     $kode_unik = mt_rand(000000, 999999);
-    $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    // $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    // $data = [
+    //   'name' => $user['name'],
+    //   'email' => $user['email'],
+    //   'no_hp' => $user['no_hp'],
+    //   'address' => $user['address'],
+    //   'nik' => $user['nik'],
+    //   'categories' => $this->input->post('categories', true),
+    //   'judul' =>  $this->input->post('judul', true),
+    //   'body' => $this->input->post('body', true),
+    //   'kode_unik' => $kode_unik,
+    //   'status' => 'diterima',
+    //   'date_created' => time()
+
+    // ];
     $data = [
-      'name' => $user['name'],
-      'email' => $user['email'],
-      'no_hp' => $user['no_hp'],
-      'address' => $user['address'],
-      'nik' => $user['nik'],
-      'categories' => $this->input->post('categories', true),
+      'user_id' => $this->input->post('userid', true),
       'judul' =>  $this->input->post('judul', true),
       'body' => $this->input->post('body', true),
-      'kode_unik' => $kode_unik,
       'status' => 'diterima',
+      'categories_id' => $this->input->post('categories', true),
+      'kode_unik' => $kode_unik,
       'date_created' => time()
-
     ];
 
-    $this->db->insert('aduan', $data);
+    $this->db->insert('reporting', $data);
   }
 
   public function getDataByEmailSession()

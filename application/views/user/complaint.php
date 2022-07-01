@@ -1,39 +1,41 @@
 <!-- Main -->
 <main>
+
+  <section class="form-complaint ">
+    <h2>Data Diri</h2>
+    <hr class="divider">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nama Lengkap</label>
+      <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>" disabled>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Alamat Email</label>
+      <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" disabled>
+    </div>
+    <div class="mb-3">
+      <label for="nope" class="form-label">Nomor Telepon Aktif</label>
+      <input type="text" class="form-control" id="nope" name="nope" value="<?= $user['no_hp']; ?>" disabled>
+    </div>
+    <div class="mb-3">
+      <label for="nik" class="form-label">Nomor Induk Kependudukan</label>
+      <input type="text" class="form-control" id="nik" name="nik" value="<?= $user['nik']; ?>" disabled>
+    </div>
+    <div class="mb-3">
+      <label for="alamat" class="form-label">Alamat</label>
+      <textarea name="alamat" id="alamat" class="form-control" value="<?= $user['address']; ?>" disabled><?= $user['address']; ?>"</textarea>
+    </div>
+  </section>
   <!-- Section Form Complaint -->
-  <form action="<?= base_url(); ?>complaint/add" class="form-complaint" method="POST">
-    <section>
-      <h2>Data Diri</h2>
-      <hr class="divider">
-      <div class="mb-3">
-        <label for="name" class="form-label">Nama Lengkap</label>
-        <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>" disabled>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Alamat Email</label>
-        <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" disabled>
-      </div>
-      <div class="mb-3">
-        <label for="nope" class="form-label">Nomor Telepon Aktif</label>
-        <input type="text" class="form-control" id="nope" name="nope" value="<?= $user['no_hp']; ?>" disabled>
-      </div>
-      <div class="mb-3">
-        <label for="nik" class="form-label">Nomor Induk Kependudukan</label>
-        <input type="text" class="form-control" id="nik" name="nik" value="<?= $user['nik']; ?>" disabled>
-      </div>
-      <div class="mb-3">
-        <label for="alamat" class="form-label">Alamat</label>
-        <textarea name="alamat" id="alamat" class="form-control" value="<?= $user['address']; ?>" disabled><?= $user['address']; ?>"</textarea>
-      </div>
-    </section>
+  <form action="<?= base_url(); ?>complaint/add" class="form-complaint personal-data" method="POST">
     <section class="data-aduan">
       <h2>Data Aduan</h2>
       <hr class="divider">
+      <input type="hidden" value="<?= $user['id_user']; ?>" name="userid">
       <div class="mb-3">
         <select class="form-select text-capitalize" aria-label="Default select example" name="categories" id="categories">
           <option value="" selected>Pilih Kategori</option>
           <?php foreach ($categories as $category) : ?>
-            <option value="<?= $category['categories']; ?>"><?= $category['categories']; ?></option>
+            <option value="<?= $category['id_categories']; ?>"><?= $category['categories']; ?></option>
           <?php endforeach; ?>
         </select>
         <div class="form-text text-danger"><?= form_error('categories'); ?></div>

@@ -592,7 +592,11 @@ nav ul .btn-nav {
 
 /* Section Form Complaint  */
 .form-complaint {
-  padding: 10%;
+  padding: 10% 10% 0 10%;
+}
+
+.personal-data {
+  padding: 0 10% 5% 10%;
 }
 
 .form-complaint h2 {
@@ -1164,6 +1168,10 @@ nav ul .btn-nav {
     padding: 15% 5% 10% 5%;
   }
 
+  .personal-data {
+    padding: 0 5% 10% 5%;
+  }
+
   .form-complaint h2 {
     font-size: 2vw;
   }
@@ -1568,6 +1576,10 @@ nav ul .btn-nav {
   /* Section Form Complaint  */
   .form-complaint {
     padding: 20% 5% 10% 5%;
+  }
+
+  .personal-data {
+    padding: 0 5% 10% 5%;
   }
 
   .form-complaint h2 {
