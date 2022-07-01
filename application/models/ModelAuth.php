@@ -12,7 +12,6 @@ class ModelAuth extends CI_Model
       'nik' => $this->input->post('nik', true),
       'no_hp' => $this->input->post('nope', true),
       'address' => $this->input->post('alamat', true),
-      'image' => "default.jpg",
       'password' => password_hash($this->input->post('password1', true), PASSWORD_DEFAULT),
       'role_id' => 2,
       'is_active' => 1,
