@@ -50,8 +50,8 @@
                     Menu
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>admin/detailUser/<?= $user['id']; ?>">Detail</a>
-                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/deleteUser/<?= $user['id']; ?>">Hapus</a>
+                    <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>admin/detailUser/<?= $user['id_user']; ?>">Detail</a>
+                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/deleteUser/<?= $user['id_user']; ?>">Hapus</a>
                   </div>
                 </div>
               </td>

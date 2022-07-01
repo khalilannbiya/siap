@@ -81,8 +81,11 @@ class Auth extends CI_Controller
     $this->form_validation->set_rules(
       'name',
       'Name',
-      'required|trim',
-      ['required' => '%s harus diisi!']
+      'required|trim|max_length[22]',
+      [
+        'required' => '%s harus diisi!',
+        'max_length' => 'Nama Terlalu Panjang!',
+      ]
     );
     $this->form_validation->set_rules(
       'email',
@@ -116,17 +119,21 @@ class Auth extends CI_Controller
     $this->form_validation->set_rules(
       'nope',
       'Nomor Telepon',
-      'required|trim|numeric',
+      'required|trim|numeric|max_length[13]',
       [
         'required' => '%s harus diisi!.',
+        'max_length' => 'Nomor HP terlalu panjang!',
         'numeric' => 'Diisi dengan angka!'
       ]
     );
     $this->form_validation->set_rules(
       'alamat',
       'Alamat',
-      'required|trim',
-      ['required' => '%s harus diisi!']
+      'required|trim|max_length[50]',
+      [
+        'required' => '%s harus diisi!',
+        'max_length' => 'Alamat terlalu panjang!'
+      ]
     );
     $this->form_validation->set_rules(
       'password1',
