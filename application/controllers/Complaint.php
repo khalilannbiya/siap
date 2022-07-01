@@ -64,9 +64,11 @@ class Complaint extends CI_Controller
 		$this->form_validation->set_rules(
 			'judul',
 			'Judul',
-			'required|trim',
+			'required|trim|max_length[25]',
 			[
 				'required' => '%s harus diisi!.',
+				'max_length' => 'Judul terlalu panjang!',
+
 			]
 		);
 		$this->form_validation->set_rules(
