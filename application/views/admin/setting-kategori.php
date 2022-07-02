@@ -28,7 +28,7 @@
             <th scope="row"><?= $i++; ?></th>
             <td><?= $category['categories']; ?></td>
             <td>
-              <a href="<?= base_url(); ?>admin/deleteCategories/<?= $category['id']; ?>" class="btn btn-danger">Hapus</a>
+              <a href="<?= base_url(); ?>admin/deleteCategories/<?= $category['id_categories']; ?>" class="btn btn-danger">Hapus</a>
             </td>
           </tr>
         <?php endforeach; ?>

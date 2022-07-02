@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <form action="complaint/update" method="POST">
-    <input type="hidden" name="id" value="<?= $complaint['id']; ?>">
+    <input type="hidden" name="id" value="<?= $complaint['id_aduan']; ?>">
     <div class="form-group">
       <label for="">Kategori</label>
       <select class="form-control" id="categories" name="categories">
         <?php foreach ($categories as $category) : ?>
-          <?php if ($category === $complaint['categories']) : ?>
-            <option selected value="<?= $category['categories']; ?>"><?= $category['categories']; ?></option>
+          <?php if ($category['categories'] === $complaint['categories']) : ?>
+            <option selected value="<?= $category['id_categories']; ?>"><?= $category['categories']; ?></option>
           <?php else : ?>
-            <option value="<?= $category['categories']; ?>"><?= $category['categories']; ?></option>
+            <option value="<?= $category['id_categories']; ?>"><?= $category['categories']; ?></option>
           <?php endif; ?>
         <?php endforeach; ?>
       </select>

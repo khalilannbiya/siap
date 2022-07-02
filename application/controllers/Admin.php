@@ -64,9 +64,10 @@ class Admin extends CI_Controller
     $this->form_validation->set_rules(
       'categories',
       'Kategori',
-      'required|trim',
+      'required|trim|max_length[15]',
       [
         'required' => '%s harus diisi!.',
+        'max_length' => 'Kategori terlalu panjang!',
       ]
     );
     if (!$this->form_validation->run()) {
@@ -84,7 +85,7 @@ class Admin extends CI_Controller
 
   public function deleteCategories($id)
   {
-    $this->db->delete('categories', ['id' => $id]);
+    $this->db->delete('categories', ['id_categories' => $id]);
     $this->session->set_flashdata('message', 'Kategori telah dihapus!');
     redirect('admin/managementCategories');
   }

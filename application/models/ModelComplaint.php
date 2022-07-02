@@ -20,6 +20,18 @@ class ModelComplaint extends CI_Model
     $this->db->insert('reporting', $data);
   }
 
+  public function ubahDataAduan()
+  {
+    $data = [
+      'categories_id' => $this->input->post('categories', true),
+      'judul' => $this->input->post('judul', true),
+      'body' => $this->input->post('body', true),
+    ];
+
+    $this->db->where('id_aduan', $this->input->post('id'));
+    $this->db->update('reporting', $data);
+  }
+
   public function getDataByEmailSession()
   {
     $userEmail = $this->session->userdata('email');
@@ -193,19 +205,7 @@ class ModelComplaint extends CI_Model
 
   public function hapusDataAduan($unic)
   {
-    return $this->db->delete('aduan', ['kode_unik' => $unic]);
-  }
-
-  public function ubahDataAduan()
-  {
-    $data = [
-      'categories' => $this->input->post('categories', true),
-      'judul' => $this->input->post('judul', true),
-      'body' => $this->input->post('body', true),
-    ];
-
-    $this->db->where('id', $this->input->post('id'));
-    $this->db->update('aduan', $data);
+    return $this->db->delete('reporting', ['kode_unik' => $unic]);
   }
 
   public function ubahToProcess($unic)
@@ -213,7 +213,7 @@ class ModelComplaint extends CI_Model
     $data =  ['status' => 'diproses'];
 
     $this->db->where('kode_unik', $unic);
-    $this->db->update('aduan', $data);
+    $this->db->update('reporting', $data);
   }
 
   public function ubahToSelesai($unic)
@@ -221,6 +221,6 @@ class ModelComplaint extends CI_Model
     $data =  ['status' => 'selesai'];
 
     $this->db->where('kode_unik', $unic);
-    $this->db->update('aduan', $data);
+    $this->db->update('reporting', $data);
   }
 }
