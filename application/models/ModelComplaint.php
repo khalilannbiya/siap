@@ -131,10 +131,14 @@ class ModelComplaint extends CI_Model
     ];
     $keyword = implode("", $data);
 
-    return $this->db->select('name, categories, judul, body, status, kode_unik, date_created')
-      ->where(['kode_unik' => $keyword])
-      ->get('aduan')->row_array();
-    // return $this->db->get_where('aduan', ['kode' => $keyword])->row_array();
+    $this->db->select('user.name, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('reporting.kode_unik', $keyword);
+    $query = $this->db->get()->row_array();
+
+    return $query;
   }
 
   public function getAllDataAduanLimit()
