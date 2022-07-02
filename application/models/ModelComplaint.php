@@ -72,9 +72,15 @@ class ModelComplaint extends CI_Model
 
   public function searchByButtonStatus($status)
   {
+    $this->db->select('reporting.id_aduan, user.name, user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('reporting.status', $status);
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->result_array();
 
-    return $this->db->where(['status' => $status])->order_by('id', 'DESC')
-      ->get('aduan')->result_array();
+    return $query;
   }
 
   public function getDataById($unic)
@@ -121,14 +127,27 @@ class ModelComplaint extends CI_Model
 
   public function getAllDataAduanLimit()
   {
-    return $this->db->order_by('id', 'DESC')
-      ->get('aduan', 5)->result_array();
+    $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->order_by('id_aduan', 'DESC');
+    $this->db->limit(5);
+    $query = $this->db->get()->result_array();
+
+    return $query;
   }
 
   public function getAllDataAduan()
   {
-    return $this->db->order_by('id', 'DESC')
-      ->get('aduan')->result_array();
+    $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->result_array();
+
+    return $query;
   }
 
   public function getDataAduanByStatusDiterima()
@@ -142,21 +161,34 @@ class ModelComplaint extends CI_Model
   {
     $keyword = $this->input->post('keyword', true);
 
-    return $this->db->like('name', $keyword)
-      ->or_like('judul', $keyword)
-      ->or_like('nik', $keyword)
-      ->or_like('no_hp', $keyword)
-      ->or_like('email', $keyword)
-      ->or_like('categories', $keyword)
-      ->or_like('status', $keyword)
-      ->or_like('kode_unik', $keyword)
-      ->order_by('id', 'DESC')
-      ->get('aduan')->result_array();
+    $this->db->select('reporting.id_aduan, user.name, user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->like('user.name', $keyword);
+    $this->db->or_like('reporting.judul', $keyword);
+    $this->db->or_like('user.nik', $keyword);
+    $this->db->or_like('user.no_hp', $keyword);
+    $this->db->or_like('user.email', $keyword);
+    $this->db->or_like('categories.categories', $keyword);
+    $this->db->or_like('reporting.kode_unik', $keyword);
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->result_array();
+
+    return $query;
   }
 
   public function getDataAduanByCode($unic)
   {
-    return $this->db->get_where('aduan', ['kode_unik' => $unic])->row_array();
+    $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('reporting.kode_unik', $unic);
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->row_array();
+
+    return $query;
   }
 
   public function hapusDataAduan($unic)
