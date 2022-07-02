@@ -166,13 +166,6 @@ class ModelComplaint extends CI_Model
     return $query;
   }
 
-  public function getDataAduanByStatusDiterima()
-  {
-    return $this->db->where('status', 'diterima')
-      ->order_by('id', 'DESC')
-      ->get('aduan')->result_array();
-  }
-
   public function searchAduanByKeyword()
   {
     $keyword = $this->input->post('keyword', true);
