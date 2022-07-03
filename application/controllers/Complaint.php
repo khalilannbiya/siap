@@ -15,8 +15,7 @@ class Complaint extends CI_Controller
 
 	public function index($status = null)
 	{
-
-		// Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan user, jadi tidak boleh masuk ke controller user
+		// Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan admin, jadi tidak boleh masuk ke controller admin
 		if ($this->session->userdata('role_id') != 1) {
 			redirect('user');
 		}
@@ -39,6 +38,17 @@ class Complaint extends CI_Controller
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('admin/all', $data);
 		$this->load->view('templates/footer', $data);
+	}
+
+	public function hapusAduan($unic)
+	{
+		// Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan admin, jadi tidak boleh masuk ke controller admin
+		if ($this->session->userdata('role_id') != 1) {
+			redirect('user');
+		}
+		$data['complaint'] = $this->ModelComplaint->hapusDataAduan($unic);
+		$this->session->set_flashdata('message', 'Data aduan telah dihapus!');
+		redirect('complaint');
 	}
 
 	public function update($unic)
@@ -143,8 +153,33 @@ class Complaint extends CI_Controller
 		}
 	}
 
+	public function detailAduan($unic)
+	{
+		// Detail aduan untuk dilihat di admin
+
+		// Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan admin, jadi tidak boleh masuk ke controller admin
+		if ($this->session->userdata('role_id') != 1) {
+			redirect('user');
+		}
+
+		$data['title'] = "Detail Aduan";
+		$email = $this->session->userdata('email');
+		$data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
+		$data['detail'] = $this->ModelComplaint->getDataAduanByCode($unic);
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('admin/detail-aduan', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function get($status = null)
 	{
+		// Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan user, jadi tidak boleh masuk ke controller user
+		if ($this->session->userdata('role_id') != 2) {
+			redirect('admin');
+		}
+
 		$data['title'] = "Riwayat";
 		$data['session_cek'] = $this->session->userdata('role_id') == 2;
 
@@ -176,6 +211,11 @@ class Complaint extends CI_Controller
 
 	public function print($unic)
 	{
+
+		// Jika data didalam session role_id nya tidak sama dengan 2 yang berarti dia bukan user, jadi tidak boleh masuk ke controller user
+		if ($this->session->userdata('role_id') != 2) {
+			redirect('admin');
+		}
 
 		$data['complaint'] = $this->ModelComplaint->getDataById($unic);
 

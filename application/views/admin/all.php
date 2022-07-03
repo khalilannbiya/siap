@@ -72,8 +72,8 @@
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item text-info font-weight-bold" href="<?= base_url(); ?>admin/print/<?= $complaint['kode_unik']; ?>">Cetak</a>
-                    <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>admin/detailAduan/<?= $complaint['kode_unik']; ?>">Detail</a>
-                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/hapusAduan/<?= $complaint['kode_unik']; ?>">Hapus</a>
+                    <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>complaint/detailAduan/<?= $complaint['kode_unik']; ?>">Detail</a>
+                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>complaint/hapusAduan/<?= $complaint['kode_unik']; ?>">Hapus</a>
                     <a class="dropdown-item text-success font-weight-bold" href="<?= base_url(); ?>complaint/update/<?= $complaint['kode_unik']; ?>">Ubah</a>
                     <?php if ($complaint['status'] == "diterima") : ?>
                       <hr class="dropdown-divider">

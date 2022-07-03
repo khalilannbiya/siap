@@ -121,7 +121,7 @@
 									<?php endif; ?>
 									<td><?= date('d-m-Y', $complaint['date_created']); ?></td>
 									<td>
-										<a href="<?= base_url(); ?>admin/detailAduan/<?= $complaint['kode_unik']; ?>" class="btn btn-primary">Detail</a>
+										<a href="<?= base_url(); ?>complaint/detailAduan/<?= $complaint['kode_unik']; ?>" class="btn btn-primary">Detail</a>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -156,7 +156,7 @@
 								<td><?= $user['email']; ?></td>
 								<td><?= $user['nik']; ?></td>
 								<td>
-									<a href="<?= base_url(); ?>admin/detailUser/<?= $user['id_user']; ?>" class="btn btn-primary">Detail</a>
+									<a href="<?= base_url(); ?>user/detailUser/<?= $user['id_user']; ?>" class="btn btn-primary">Detail</a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

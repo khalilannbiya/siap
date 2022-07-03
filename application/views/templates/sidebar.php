@@ -33,14 +33,14 @@
 
 	<!-- Nav Item - Categories -->
 	<li class="nav-item <?= $title == "Data User" ? "active" : ""; ?>">
-		<a class="nav-link" href="<?= base_url(); ?>admin/user">
+		<a class="nav-link" href="<?= base_url(); ?>user/getUser">
 			<i class="fas fa-fw fa-chart-area"></i>
 			<span>Data User</span></a>
 	</li>
 
 	<!-- Nav Item - Categories -->
 	<li class="nav-item <?= $title == "Tambah Kategori" ? "active" : ""; ?>">
-		<a class="nav-link" href="<?= base_url(); ?>admin/managementCategories">
+		<a class="nav-link" href="<?= base_url(); ?>category">
 			<i class="fas fa-fw fa-chart-area"></i>
 			<span>Kategori</span></a>
 	</li>

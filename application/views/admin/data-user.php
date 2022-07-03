@@ -14,7 +14,7 @@
   </div>
 
   <div class="row-sm mb-4">
-    <form action="<?= base_url(); ?>admin/user" method="POST">
+    <form action="<?= base_url(); ?>user/getUser" method="POST">
       <div class="input-group mb-3">
         <input type="text" name="pencarian" class="form-control" placeholder="Masukkan kata kunci..." aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
@@ -50,8 +50,8 @@
                     Menu
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>admin/detailUser/<?= $user['id_user']; ?>">Detail</a>
-                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>admin/deleteUser/<?= $user['id_user']; ?>">Hapus</a>
+                    <a class="dropdown-item text-primary font-weight-bold" href="<?= base_url(); ?>user/detailUser/<?= $user['id_user']; ?>">Detail</a>
+                    <a class="dropdown-item text-danger font-weight-bold" href="<?= base_url(); ?>user/deleteUser/<?= $user['id_user']; ?>">Hapus</a>
                   </div>
                 </div>
               </td>
