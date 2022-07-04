@@ -11,7 +11,7 @@
     <tbody>
       <tr>
         <th>Nama</th>
-        <td>: <?= $detail['name']; ?></td>
+        <td>: <a class="text-muted font-weight-bold" href="<?= base_url(); ?>user/detailUser/<?= $detail['id_user']; ?>"><?= $detail['name']; ?></a></td>
       </tr>
       <tr>
         <th>Email</th>
