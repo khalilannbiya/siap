@@ -138,7 +138,7 @@ class Auth extends CI_Controller
     $this->form_validation->set_rules(
       'password1',
       'Password',
-      'required|trim|min_length[5]|matches[password2]',
+      'required|trim|min_length[7]|matches[password2]',
       [
         'required' => '%s harus diisi!',
         'matches' => 'Password tidak sesuai!',
