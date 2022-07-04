@@ -2,7 +2,7 @@
   <div class="flex-footer">
     <div class="identitas">
       <img src="<?= base_url(); ?>assets/img/logo-siap.png" alt="Logo siap" />
-      <address>Situdam, Jatisari, Situdam, Kec. Jatisari, Kabupaten Karawang, Jawa Barat 41374</address>
+      <address>Situdam, Jatisari, Situdam, Kec. Jatisari, Kabupaten Karawang, Jawa Barat 41374 <a target="_blank" href="https://api.whatsapp.com/send?phone=+6281289617082&text=Halo,%20bantuan%20tentang">081289617082</a></address>
     </div>
     <div class="links">
       <h2>Useful Links</h2>

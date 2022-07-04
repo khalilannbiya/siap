@@ -29,6 +29,7 @@
         <input type="password" id="password" name="password" class="form-control" placeholder="Password" aria-label="Password">
         <div class="form-text"><?= form_error('password'); ?></div>
       </div>
+      <h3 class="help-service">Bantuan? <a target="_blank" href="https://api.whatsapp.com/send?phone=+6281289617082&text=Halo,%20bantuan%20tentang">Klick disini!</a></h3>
       <button type="submit" class="btn btn-primary">
         Masuk
       </button>
