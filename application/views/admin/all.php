@@ -24,6 +24,12 @@
     </form>
   </div>
 
+  <?php
+  echo '<pre>';
+  var_dump($complaints);
+  echo '</pre>';
+  ?>
+
   <div class="row justify-content-center mb-4">
     <a href="<?= base_url(); ?>complaint" class="col-md-2 mr-3 mt-2 btn btn-primary">Semua</a>
     <a href="<?= base_url(); ?>complaint/index/diterima" class="col-md-2 mr-3 mt-2 btn btn-success">Diterima</a>
@@ -64,7 +70,7 @@
               <?php else : ?>
                 <td class="text-capitalize text-danger font-weight-bold"><?= $complaint['status']; ?></td>
               <?php endif; ?>
-              <td><?= date('d-m-Y', $complaint['date_created']); ?></td>
+              <td><?= $complaint['date_created']; ?></td>
               <td>
                 <div class="dropdown">
                   <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">

@@ -98,9 +98,9 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Nama</th>
-							<th scope="col">Email</th>
 							<th scope="col">Kategori</th>
 							<th scope="col">Status</th>
+							<th scope="col">Waktu</th>
 							<th scope="col">Aksi</th>
 						</tr>
 					</thead>
@@ -119,7 +119,7 @@
 									<?php else : ?>
 										<td class="text-capitalize text-danger font-weight-bold"><?= $complaint['status']; ?></td>
 									<?php endif; ?>
-									<td><?= date('d-m-Y', $complaint['date_created']); ?></td>
+									<td><?= $complaint['date_created']; ?></td>
 									<td>
 										<a href="<?= base_url(); ?>complaint/detailAduan/<?= $complaint['kode_unik']; ?>" class="btn btn-primary">Detail</a>
 									</td>

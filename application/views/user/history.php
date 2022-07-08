@@ -4,7 +4,7 @@
     <div class="wrapper-search__history">
       <form action="<?= base_url(); ?>complaint/get" method="POST">
         <div class="input-group ">
-          <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Cari by Judul, Kategori, Kode Unik ..." aria-label="Recipient's username" aria-describedby="button-addon2">
+          <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Cari by Kategori, Kode Unik ..." aria-label="Recipient's username" aria-describedby="button-addon2">
           <button class="btn-search" type="submit" name="cari" id="button-addon2">Cari</button>
         </div>
       </form>
