@@ -4,7 +4,7 @@
 	<section id="welcoming-section">
 		<div class="wrapper-welcoming">
 			<div>
-				<h1>Sistem Informasi Aduan Masyarakat Desa Situdam</h1>
+				<h1>Sistem Informasi Aduan Warga Desa Situdam</h1>
 				<p>Sampaikan aduan Anda kepada kami dan ambil peran dalam mewujudkan pelayanan masyarakat yang lebih baik.</p>
 				<div class="wrapper-cta">
 					<?php if ($session_cek) : ?>
