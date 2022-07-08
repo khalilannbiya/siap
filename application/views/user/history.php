@@ -38,7 +38,7 @@
             </div>
             <div class="icon__history">
               <i class="ri-time-line"></i>
-              <p>Dikirim : <span><?= date('H:i d-m-Y', $report['date_created']); ?></span></p>
+              <p>Dikirim : <span><?= $report['date_created']; ?></span></p>
             </div>
             <div class="flex-button__history">
               <a href="<?= base_url(); ?>complaint/show/<?= $report['kode_unik']; ?>" class="btn-detail">Detail</a>

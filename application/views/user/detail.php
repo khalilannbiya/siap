@@ -59,7 +59,7 @@
         </tr>
         <tr>
           <th>Dikirimkan</th>
-          <td>: <?= date('H:i d-m-Y', $detail['date_created']); ?></td>
+          <td>: <?= $detail['date_created']; ?></td>
         </tr>
       </table>
     </div>

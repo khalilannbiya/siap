@@ -14,7 +14,7 @@ class ModelComplaint extends CI_Model
       'status' => 'diterima',
       'categories_id' => $this->input->post('categories', true),
       'kode_unik' => $kode_unik,
-      'date_created' => time()
+      'date_created' => date("H:i d-m-Y")
     ];
 
     $this->db->insert('reporting', $data);
