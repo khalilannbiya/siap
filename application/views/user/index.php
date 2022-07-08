@@ -74,7 +74,7 @@
 	<section id="section-statistik">
 		<div class="wrapper-body">
 			<div>
-				<h2>Statistik aduan masyarakat Desa Situdam</h2>
+				<h2>Statistik aduan warga Desa Situdam</h2>
 			</div>
 			<div class="wrapper-cards__statistik">
 				<div class="card-statistik">

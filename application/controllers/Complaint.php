@@ -136,9 +136,10 @@ class Complaint extends CI_Controller
 		$this->form_validation->set_rules(
 			'body',
 			'Isi',
-			'required|trim',
+			'required|trim|max_length[250]',
 			[
-				'required' => '%s harus diisi!.'
+				'required' => '%s harus diisi!.',
+				'max_length' => 'Terlalu panjang! Max 250 karakter!',
 			]
 		);
 
