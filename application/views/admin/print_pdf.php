@@ -174,11 +174,11 @@
       </tr>
       <tr>
         <th>Dikirimkan</th>
-        <td>: <span><?= date('H:i d-m-Y', $complaint['date_created']); ?></span></td>
+        <td>: <span><?= $complaint['date_created']; ?></span></td>
       </tr>
       <tr>
         <th>Dicetak</th>
-        <td>: <span><?= date('H:i d-m-Y', time()); ?></span></td>
+        <td>: <span><?= date('H:i d-m-Y'); ?></span></td>
       </tr>
     </tbody>
   </table>
