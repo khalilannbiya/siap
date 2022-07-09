@@ -37,7 +37,7 @@
         </tr>
         <tr>
           <th>Dikirimkan</th>
-          <td>: <?= date('H:i d-m-Y', $result['date_created']); ?></td>
+          <td>: <?= $result['date_created']; ?></td>
         </tr>
       </table>
     </div>
