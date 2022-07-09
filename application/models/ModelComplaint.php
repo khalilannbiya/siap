@@ -184,6 +184,22 @@ class ModelComplaint extends CI_Model
     return $query;
   }
 
+  public function searchByDate()
+  {
+    $stringtotime = strtotime($this->input->post('date', true));
+    $date = date("d-m-Y", $stringtotime);
+
+    $this->db->select('reporting.id_aduan, user.name, user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->like('reporting.date_created', $date);
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->result_array();
+
+    return $query;
+  }
+
   public function getDataAduanByCode($unic)
   {
     $this->db->select('reporting.id_aduan, user.id_user, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');

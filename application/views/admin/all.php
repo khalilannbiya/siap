@@ -14,7 +14,15 @@
   </div>
 
   <div class="row-sm mb-4">
-    <form action="<?= base_url(); ?>complaint" method="POST">
+    <form action="<?= base_url(); ?>complaint" method="post" class="col">
+      <div class="form-group">
+        <label for="date" class="text-dark">Search by Date</label>
+        <input type="date" name="date" id="date" class="form-control mb-3" placeholder="Cari by Date">
+        <button type="submit" class="btn btn-primary" name="submit">Search</button>
+      </div>
+    </form>
+    <form action="<?= base_url(); ?>complaint" method="POST" class="col">
+      <label for="date" class="text-dark">Search by Kata kunci</label>
       <div class="input-group mb-3">
         <input type="text" name="keyword" class="form-control" placeholder="Masukkan kata kunci..." aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
@@ -22,13 +30,9 @@
         </div>
       </div>
     </form>
+
   </div>
 
-  <?php
-  echo '<pre>';
-  var_dump($complaints);
-  echo '</pre>';
-  ?>
 
   <div class="row justify-content-center mb-4">
     <a href="<?= base_url(); ?>complaint" class="col-md-2 mr-3 mt-2 btn btn-primary">Semua</a>

@@ -28,6 +28,8 @@ class Complaint extends CI_Controller
 			$data['complaints'] = $this->ModelComplaint->searchAduanByKeyword();
 		} elseif ($status) {
 			$data['complaints'] = $this->ModelComplaint->searchByButtonStatus($status);
+		} elseif ($this->input->post('date')) {
+			$data['complaints'] = $this->ModelComplaint->searchByDate();
 		} else {
 			$data['complaints'] = $this->ModelComplaint->getAllDataAduan();
 		}
