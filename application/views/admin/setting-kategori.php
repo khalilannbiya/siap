@@ -6,6 +6,13 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+  <?php elseif (form_error('categories')) : ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Yahhhhh!</strong> <?= form_error('categories'); ?>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   <?php endif; ?>
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

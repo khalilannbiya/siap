@@ -26,10 +26,11 @@ class Category extends CI_Controller
     $this->form_validation->set_rules(
       'categories',
       'Kategori',
-      'required|trim|max_length[15]',
+      'required|trim|max_length[15]|is_unique[categories.categories]',
       [
         'required' => '%s harus diisi!.',
-        'max_length' => 'Kategori terlalu panjang!',
+        'max_length' => 'Kategori terlalu panjang, Max 15 karakter!',
+        'is_unique' => 'Kategori ini sudah ada!'
       ]
     );
     if (!$this->form_validation->run()) {
