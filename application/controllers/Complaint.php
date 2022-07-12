@@ -22,6 +22,8 @@ class Complaint extends CI_Controller
 
 		$email = $this->session->userdata('email');
 		$data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
+		$data['categories'] = $this->ModelCategories->getDataAll();
+		// $data['result'] = $this->input->post('categories');
 		$data['title'] = "Semua Data Aduan";
 
 		if ($this->input->post('keyword')) {
@@ -30,6 +32,8 @@ class Complaint extends CI_Controller
 			$data['complaints'] = $this->ModelComplaint->searchByButtonStatus($status);
 		} elseif ($this->input->post('date')) {
 			$data['complaints'] = $this->ModelComplaint->searchByDate();
+		} elseif ($this->input->post('categories')) {
+			$data['complaints'] = $this->ModelComplaint->searchByCategories();
 		} else {
 			$data['complaints'] = $this->ModelComplaint->getAllDataAduan();
 		}

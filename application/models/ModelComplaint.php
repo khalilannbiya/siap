@@ -174,10 +174,22 @@ class ModelComplaint extends CI_Model
     $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
     $this->db->like('user.name', $keyword);
     $this->db->or_like('user.nik', $keyword);
-    $this->db->or_like('user.no_hp', $keyword);
-    $this->db->or_like('user.email', $keyword);
-    $this->db->or_like('categories.categories', $keyword);
     $this->db->or_like('reporting.kode_unik', $keyword);
+    $this->db->order_by('id_aduan', 'DESC');
+    $query = $this->db->get()->result_array();
+
+    return $query;
+  }
+
+  public function searchByCategories()
+  {
+    $categories = $this->input->post('categories', true);
+
+    $this->db->select('reporting.id_aduan, user.name, user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->or_like('categories.categories', $categories);
     $this->db->order_by('id_aduan', 'DESC');
     $query = $this->db->get()->result_array();
 

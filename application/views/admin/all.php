@@ -13,7 +13,7 @@
     <h1 class="h3 mb-0 text-gray-800">Semua Data Aduan</h1>
   </div>
 
-  <div class="row-sm mb-4">
+  <div class="row mb-4">
     <form action="<?= base_url(); ?>complaint" method="post" class="col">
       <div class="form-group">
         <label for="date" class="text-dark">Search by Date</label>
@@ -22,17 +22,28 @@
       </div>
     </form>
     <form action="<?= base_url(); ?>complaint" method="POST" class="col">
+      <div class="form-group col">
+        <label for="date" class="text-dark">Search by Kategori</label>
+        <select id="inputState" class="form-control text-capitalize" name="categories" id="categories">
+          <option value="" selected>Pilih Kategori</option>
+          <?php foreach ($categories as $category) : ?>
+            <option value="<?= $category['categories']; ?>"><?= $category['categories']; ?></option>
+          <?php endforeach; ?>
+        </select>
+        <button type="submit" class="btn btn-primary mt-3" name="submit">Search</button>
+      </div>
+      <div class="form-text text-danger"><?= form_error('categories'); ?></div>
+    </form>
+    <form action="<?= base_url(); ?>complaint" method="POST" class="col">
       <label for="date" class="text-dark">Search by Kata kunci</label>
       <div class="input-group mb-3">
-        <input type="text" name="keyword" class="form-control" placeholder="Masukkan kata kunci..." aria-label="Recipient's username" aria-describedby="button-addon2">
+        <input type="text" name="keyword" class="form-control" placeholder="Masukkan Nama/NIK/Kode Unik ..." aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
         </div>
       </div>
     </form>
-
   </div>
-
 
   <div class="row justify-content-center mb-4">
     <a href="<?= base_url(); ?>complaint" class="col-md-2 mr-3 mt-2 btn btn-primary">Semua</a>
