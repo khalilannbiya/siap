@@ -110,10 +110,34 @@ class ModelComplaint extends CI_Model
 
   public function getDataNumByStatus()
   {
-    $approved = $this->db->get_where('reporting', ['status' => "diterima"])->num_rows();
-    $onprocess = $this->db->get_where('reporting', ['status' => "diproses"])->num_rows();
-    $done = $this->db->get_where('reporting', ['status' => "selesai"])->num_rows();
-    $all = $this->db->get('reporting')->num_rows();
+    // Diterima
+    $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('reporting.status', "diterima");
+    $approved = $this->db->get()->num_rows();
+
+    $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('reporting.status', "diproses");
+    $onprocess = $this->db->get()->num_rows();
+
+    $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $this->db->where('reporting.status', "selesai");
+    $done = $this->db->get()->num_rows();
+
+    $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+    $this->db->from('reporting');
+    $this->db->join('user', 'reporting.user_id = user.id_user');
+    $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+    $all = $this->db->get()->num_rows();
+
     return [$approved, $onprocess, $done, $all];
   }
 
