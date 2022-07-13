@@ -13,16 +13,40 @@
     <h1 class="h3 mb-0 text-gray-800">Semua Data Aduan</h1>
   </div>
 
+  <div class="d-flex row-count">
+    <?php foreach ($counts as $count) :  ?>
+      <div class="mb-4 mr-2 card-count__reporting">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  <?= $count['categories']; ?>
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  <?= $count['num']; ?>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+
   <div class="row mb-4">
-    <form action="<?= base_url(); ?>complaint" method="post" class="col">
+    <form action="<?= base_url(); ?>complaint" method="post" class="col-sm">
       <div class="form-group">
         <label for="date" class="text-dark">Search by Date</label>
         <input type="date" name="date" id="date" class="form-control mb-3" placeholder="Cari by Date">
         <button type="submit" class="btn btn-primary" name="submit">Search</button>
       </div>
     </form>
-    <form action="<?= base_url(); ?>complaint" method="POST" class="col">
-      <div class="form-group col">
+    <form action="<?= base_url(); ?>complaint" method="POST" class="col-sm">
+      <div class="form-group col form-search">
         <label for="date" class="text-dark">Search by Kategori</label>
         <select id="inputState" class="form-control text-capitalize" name="categories" id="categories">
           <option value="" selected>Pilih Kategori</option>
@@ -34,7 +58,7 @@
       </div>
       <div class="form-text text-danger"><?= form_error('categories'); ?></div>
     </form>
-    <form action="<?= base_url(); ?>complaint" method="POST" class="col">
+    <form action="<?= base_url(); ?>complaint" method="POST" class="col-sm">
       <label for="date" class="text-dark">Search by Kata kunci</label>
       <div class="input-group mb-3">
         <input type="text" name="keyword" class="form-control" placeholder="Masukkan Nama/NIK/Kode Unik ..." aria-label="Recipient's username" aria-describedby="button-addon2">

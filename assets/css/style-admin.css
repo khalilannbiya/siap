@@ -1,0 +1,15 @@
+.row-count {
+  width: 80vw;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.card-count__reporting {
+  min-width: 250px;
+}
+
+@media screen and (max-width: 575px) {
+  .form-search {
+    padding: 0;
+  }
+}

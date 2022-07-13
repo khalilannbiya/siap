@@ -141,6 +141,30 @@ class ModelComplaint extends CI_Model
     return [$approved, $onprocess, $done, $all];
   }
 
+  public function getCountByCategories()
+  {
+    $result = $this->db->get('categories')->result_array();
+    $array = [];
+    foreach ($result as $value) {
+      $this->db->select('reporting.id_aduan, user.name, , user.email, user.no_hp, user.address, user.nik, categories.categories, reporting.judul, reporting.body, reporting.kode_unik, reporting.status, reporting.date_created');
+      $this->db->from('reporting');
+      $this->db->join('user', 'reporting.user_id = user.id_user');
+      $this->db->join('categories', 'reporting.categories_id = categories.id_categories');
+      $this->db->where('categories.categories', $value['categories']);
+      $approved = $this->db->get()->num_rows();
+
+      $arrayBaru = [
+        "categories" => $value['categories'],
+        "num" => $approved
+      ];
+
+      array_push($array, $arrayBaru);
+    }
+
+    return $array;
+  }
+
+
   public function getDataByUnicCode()
   {
     $data = [
@@ -175,6 +199,7 @@ class ModelComplaint extends CI_Model
 
     return $query;
   }
+
 
   public function getAllDataAduan()
   {

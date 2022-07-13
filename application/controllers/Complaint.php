@@ -23,7 +23,7 @@ class Complaint extends CI_Controller
 		$email = $this->session->userdata('email');
 		$data['userlogin'] = $this->db->get_where('user', ['email' => $email])->row_array();
 		$data['categories'] = $this->ModelCategories->getDataAll();
-		// $data['result'] = $this->input->post('categories');
+		$data['counts'] = $this->ModelComplaint->getCountByCategories();
 		$data['title'] = "Semua Data Aduan";
 
 		if ($this->input->post('keyword')) {
