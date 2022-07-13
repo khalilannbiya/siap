@@ -79,11 +79,11 @@ return array (
     'normal' => $fontDir . '/DejaVuSerif',
   ),
   'inter' => array(
-    '200' => $fontDir . '/inter_200_654a92442066684d258e7df3f9e8f466',
-    'normal' => $fontDir . '/inter_normal_939b58724766a274c4992e346b2b8d50',
-    '500' => $fontDir . '/inter_500_69735e9d8b66356789f87e9769098c13',
-    '600' => $fontDir . '/inter_600_0a3c5c3d9b80b10bc0155e9e2c225d14',
-    'bold' => $fontDir . '/inter_bold_147acf14ddf62bab838b19e0cbccf47c',
+    '200' => $fontDir . '/inter_200_e6c1fbcf88f8b708cc1d3e57af1c144b',
+    'normal' => $fontDir . '/inter_normal_4c1c39b2d60dc6de8a3bc272ce3fe7dc',
+    '500' => $fontDir . '/inter_500_73384d6e47fd66bbc719b75497af932b',
+    '600' => $fontDir . '/inter_600_5fa3cee4db6b0338a4ce38a93c93ddd3',
+    'bold' => $fontDir . '/inter_bold_c57a050bb9f74fe1522e9f687ba11188',
   ),
 );
 }; ?>
