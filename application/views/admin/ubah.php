@@ -16,13 +16,11 @@
     </div>
     <div class="form-group">
       <label for="judul">Judul</label>
-      <input type="text" class="form-control" id="judul" name="judul" value="<?= $complaint['judul']; ?>">
-      <small id="emailHelp" class="form-text text-danger"><?= form_error('judul'); ?></small>
+      <input type="text" maxlength="25" class="form-control" id="judul" name="judul" value="<?= $complaint['judul']; ?>" required>
     </div>
     <div class="form-group">
       <label for="body">Isi Aduan</label>
-      <textarea class="form-control" id="body" name="body" rows="3"><?= $complaint['body']; ?></textarea>
-      <small id="emailHelp" class="form-text text-danger"><?= form_error('body'); ?></small>
+      <textarea maxlength="250" class="form-control" id="body" name="body" rows="3"><?= $complaint['body']; ?></textarea>
     </div>
     <button type="submit" name="ubah" class="btn btn-primary">Ubah</button>
   </form>

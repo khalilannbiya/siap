@@ -77,24 +77,24 @@ class Complaint extends CI_Controller
 				'required' => '%s harus diisi!.',
 			]
 		);
-		$this->form_validation->set_rules(
-			'judul',
-			'Judul',
-			'required|trim|max_length[40]',
-			[
-				'required' => '%s harus diisi!.',
-				'max_length' => 'Judul terlalu panjang!',
+		// $this->form_validation->set_rules(
+		// 	'judul',
+		// 	'Judul',
+		// 	'required|trim|max_length[25]',
+		// 	[
+		// 		'required' => '%s harus diisi!.',
+		// 		'max_length' => 'Judul terlalu panjang!',
 
-			]
-		);
-		$this->form_validation->set_rules(
-			'body',
-			'Isi',
-			'required|trim',
-			[
-				'required' => '%s harus diisi!.'
-			]
-		);
+		// 	]
+		// );
+		// $this->form_validation->set_rules(
+		// 	'body',
+		// 	'Isi',
+		// 	'required|trim',
+		// 	[
+		// 		'required' => '%s harus diisi!.'
+		// 	]
+		// );
 
 		if (!$this->form_validation->run()) {
 			$this->load->view('templates/header', $data);
