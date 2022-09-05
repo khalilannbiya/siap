@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 24, 2022 at 01:50 PM
+-- Generation Time: Sep 05, 2022 at 10:30 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -69,7 +69,8 @@ INSERT INTO `reporting` (`id_aduan`, `user_id`, `judul`, `body`, `status`, `cate
 (3, 4, 'Curanmor disini asadasdas', 'iure facilis repellendus id, hic debitis accusamus dolore architecto incidunt provident totam nemo nostrum earum quas fuga alias suscipit! Modi ullam consequuntur harum voluptates quo excepturi velit.', 'diterima', 2, 777673, '10:19 13-07-2022'),
 (4, 2, 'ini judul mampet salurann', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis, exercitationem, adipisci necessitatibus facere labore perferendis aliquid praesentium reprehenderit cupiditate voluptate, dolores explicabo sint.', 'diterima', 4, 738549, '19:36 24-07-2022'),
 (5, 2, 'ini judul yang lebih dari', 'asdjkasldjkhasdasdasd', 'diterima', 4, 510561, '19:38 24-07-2022'),
-(6, 2, 'ini judul yang lebih dari', 'ini judul yang lebih dari hasjhdakjshdkjahskdjhaskjdhaksjhdkajshdkjahsdkjahskdjhasud askdjhaksjhdkajshdas aksjdhkajshdkajshd kjahksjhdkjasdasd haksjhdkajshdaoihew haksjhkajsoihdwoo jkhaskjhaskjhdkajsdo kjhkjhaosdhoiwh jhbaksjhdkasuiwujikhsadas jkasda', 'diterima', 1, 900819, '19:39 24-07-2022');
+(6, 2, 'ini judul yang lebih dari', 'ini judul yang lebih dari hasjhdakjshdkjahskdjhaskjdhaksjhdkajshdkjahsdkjahskdjhasud askdjhaksjhdkajshdas aksjdhkajshdkajshd kjahksjhdkjasdasd haksjhdkajshdaoihew haksjhkajsoihdwoo jkhaskjhaskjhdkajsdo kjhkjhaosdhoiwh jhbaksjhdkasuiwujikhsadas jkasda', 'diterima', 1, 900819, '19:39 24-07-2022'),
+(7, 3, 'Ini judul bencana', 'ini isi aduan dari kategori bencana', 'diproses', 4, 102618, '10:40 25-07-2022');
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `reporting`
 --
 ALTER TABLE `reporting`
-  MODIFY `id_aduan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_aduan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
