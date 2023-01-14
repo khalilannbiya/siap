@@ -58,5 +58,3 @@ setTimeout(() => {
 let rowLayout = document.getElementById("row-layout");
 let columnLayout = document.getElementById("column-layout");
 let outerWidth = window.outerWidth;
-
-console.log(outerWidth);
