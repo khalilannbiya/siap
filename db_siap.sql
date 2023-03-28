@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 05, 2022 at 10:30 AM
--- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- Generation Time: Mar 28, 2023 at 04:30 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
-  `id_categories` int(3) NOT NULL,
+  `id_categories` int NOT NULL,
   `categories` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -49,13 +49,13 @@ INSERT INTO `categories` (`id_categories`, `categories`) VALUES
 --
 
 CREATE TABLE `reporting` (
-  `id_aduan` int(5) NOT NULL,
-  `user_id` int(5) NOT NULL,
+  `id_aduan` int NOT NULL,
+  `user_id` int NOT NULL,
   `judul` varchar(25) NOT NULL,
   `body` varchar(250) NOT NULL,
   `status` enum('diterima','diproses','selesai') NOT NULL,
-  `categories_id` int(3) NOT NULL,
-  `kode_unik` int(6) NOT NULL,
+  `categories_id` int NOT NULL,
+  `kode_unik` int NOT NULL,
   `date_created` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,11 +65,10 @@ CREATE TABLE `reporting` (
 
 INSERT INTO `reporting` (`id_aduan`, `user_id`, `judul`, `body`, `status`, `categories_id`, `kode_unik`, `date_created`) VALUES
 (1, 3, 'Ini judul curanmor', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis, exercitationem, adipisci necessitatibus facere labore perferendis aliquid praesentium reprehenderit cupiditate voluptate, dolores explicabo sint. Modi repellendus eveniet animi sunt', 'diterima', 2, 603066, '10:10 13-07-2022'),
-(2, 2, 'Ini judul bencana', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis, exercitationem, adipisci necessitatibus facere labore perferendis aliquid praesentium reprehenderit cupiditate voluptate, dolores explicabo sint. Modi repellendus eveniet animi sunt', 'selesai', 1, 157411, '10:14 13-07-2022'),
 (3, 4, 'Curanmor disini asadasdas', 'iure facilis repellendus id, hic debitis accusamus dolore architecto incidunt provident totam nemo nostrum earum quas fuga alias suscipit! Modi ullam consequuntur harum voluptates quo excepturi velit.', 'diterima', 2, 777673, '10:19 13-07-2022'),
 (4, 2, 'ini judul mampet salurann', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis, exercitationem, adipisci necessitatibus facere labore perferendis aliquid praesentium reprehenderit cupiditate voluptate, dolores explicabo sint.', 'diterima', 4, 738549, '19:36 24-07-2022'),
 (5, 2, 'ini judul yang lebih dari', 'asdjkasldjkhasdasdasd', 'diterima', 4, 510561, '19:38 24-07-2022'),
-(6, 2, 'ini judul yang lebih dari', 'ini judul yang lebih dari hasjhdakjshdkjahskdjhaskjdhaksjhdkajshdkjahsdkjahskdjhasud askdjhaksjhdkajshdas aksjdhkajshdkajshd kjahksjhdkjasdasd haksjhdkajshdaoihew haksjhkajsoihdwoo jkhaskjhaskjhdkajsdo kjhkjhaosdhoiwh jhbaksjhdkasuiwujikhsadas jkasda', 'diterima', 1, 900819, '19:39 24-07-2022'),
+(6, 2, 'ini judul yang lebih dari', 'ini judul yang lebih dari hasjhdakjshdkjahskdjhaskjdhaksjhdkajshdkjahsdkjahskdjhasud askdjhaksjhdkajshdas aksjdhkajshdkajshd kjahksjhdkjasdasd haksjhdkajshdaoihew haksjhkajsoihdwoo jkhaskjhaskjhdkajsdo kjhkjhaosdhoiwh jhbaksjhdkasuiwujikhsadas jkasda', 'diproses', 1, 900819, '19:39 24-07-2022'),
 (7, 3, 'Ini judul bencana', 'ini isi aduan dari kategori bencana', 'diproses', 4, 102618, '10:40 25-07-2022');
 
 -- --------------------------------------------------------
@@ -79,7 +78,7 @@ INSERT INTO `reporting` (`id_aduan`, `user_id`, `judul`, `body`, `status`, `cate
 --
 
 CREATE TABLE `user` (
-  `id_user` int(5) NOT NULL,
+  `id_user` int NOT NULL,
   `name` varchar(22) NOT NULL,
   `email` varchar(35) NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan') NOT NULL,
@@ -87,10 +86,10 @@ CREATE TABLE `user` (
   `no_hp` varchar(13) NOT NULL,
   `address` varchar(50) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `role_id` int(1) NOT NULL,
-  `is_active` int(1) NOT NULL,
-  `date_created` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `role_id` int NOT NULL,
+  `is_active` int NOT NULL,
+  `date_created` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
@@ -99,8 +98,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `name`, `email`, `jenis_kelamin`, `nik`, `no_hp`, `address`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (1, 'Syeich Khalil Annbiya', 'syeichkhalil@gmail.com', 'Laki-laki', '3215013006010005', '08999161805', 'Perum Gading Mas', '$2y$10$o0oiT1g0NmaGJPrZKaDe4etmJtzxU1DzIud9meVs5iHviFX/epOgq', 1, 1, 1657681490),
 (2, 'M. Firas Akbar', 'firasakbar4@gmail.com', 'Laki-laki', '3215102365623654', '089965632165', 'Perumanas Telukjambe', '$2y$10$hqPdRq1APvtpXoV59zT82uGzQrS2yWee1I7ISKGWN5frvtQ3pS3UC', 2, 1, 1657681618),
-(3, 'Nawa Hayu M.R', 'nawa.hayu@gmail.com', 'Perempuan', '3251501320216335', '086565323616', 'Jatisari', '$2y$10$AWem/fWLksKqtVXuvCBqQ.H2/USphXXAvMAafV5K3O/BdOaSJxnAW', 2, 1, 1657681712),
-(4, 'Chairina Risky S.B', 'chairina.risky@gmail.com', 'Perempuan', '3215562202132341', '08646563231', 'Jl. Panglima', '$2y$10$HjsjopIIQPkIBZZCRjq1Reao0OEal4cCn6jjC6e/pYT9Mt/METg.G', 2, 1, 1657682194);
+(3, 'Nawa Hayu M.R', 'nawa.hayu@gmail.com', 'Perempuan', '3251501320216335', '086565323616', 'Jatisari', '$2y$10$AWem/fWLksKqtVXuvCBqQ.H2/USphXXAvMAafV5K3O/BdOaSJxnAW', 2, 1, 1657681712);
 
 -- --------------------------------------------------------
 
@@ -109,9 +107,9 @@ INSERT INTO `user` (`id_user`, `name`, `email`, `jenis_kelamin`, `nik`, `no_hp`,
 --
 
 CREATE TABLE `user_role` (
-  `id_role` int(1) NOT NULL,
+  `id_role` int NOT NULL,
   `role` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user_role`
@@ -157,25 +155,25 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_categories` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_categories` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `reporting`
 --
 ALTER TABLE `reporting`
-  MODIFY `id_aduan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_aduan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id_role` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_role` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
